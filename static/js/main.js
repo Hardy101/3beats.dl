@@ -87,30 +87,32 @@ view_count_span.forEach((view_count)=>{
     view_count.textContent = parseInt(view_count.textContent)
 })
 
-   function sendPostRequest(dynamicPart, event) {
-        event.preventDefault();
-        // Create a new FormData object
-        let formData = new FormData();
+function sendPostRequest(dynamicPart, event) {
+    event.preventDefault();
 
-        let confirmation = confirm('Do you want to download the file?')
+    let confirmation = confirm('Do you want to download the file?')
+    document.getElementById('loader_div').classList.remove('hidden')
+    loader_gif = document.getElementById('loader_gif')
+    downloading = document.getElementById('downloading')
+    download_link = document.getElementById('download_link')
 
-        if (confirmation){
-        // Construct the dynamic URL
+    if (confirmation){
         let dynamicUrl = '/video/' + dynamicPart;
-        console.log(dynamicUrl)
 
-        // Use the Fetch API to send a POST request
         fetch(dynamicUrl, {
             method: 'POST',
-            body: formData
         })
-        .then(response => {
-            // Handle the response as needed
-            console.log(response);
+        .then(response => response.text())  // Assuming the response is plain text
+        .then(data => {
+            // Update the HTML with the data received from the server
+//            document.getElementById('download_link').innerText = data;
+            loader_gif.classList.add('hidden')
+            downloading.classList.add('hidden')
+            download_link.classList.remove('hidden')
+            download_link.href = '/'+ data+".mp3";
         })
         .catch(error => {
-            // Handle errors
             console.error('Error:', error);
         });
-        }
     }
+}

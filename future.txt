@@ -101,3 +101,15 @@ videoId': 'gset79KMmt0',
 
 
 
+/////////////////////////
+//progress
+<!--    <div class="absolute h-full w-full p-5 z-30 bg-[#1a1a1a80]">-->
+<!--        <div class="w-full md:w-3/5 p-10 mx-auto mt-24 bg-white rounded-2xl">-->
+<!--            <h2 class="text-xl font-bold mb-2">Download Progress</h2>-->
+<!--            <div class="relative text-center text-white h-5 w-full rounded-full bg-gray-400 overflow-hidden" id="progressContainer">-->
+<!--                <div class="absolute top-0 left-0 bg-color1 w-1/2 h-full"></div>-->
+<!--                <span class="relative inline-block z-10">50%</span>-->
+<!--            </div>-->
+
+<!--        </div>-->
+<!--    </div>-->

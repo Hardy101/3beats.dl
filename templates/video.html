@@ -5,20 +5,9 @@
 {% endblock %}
 
 {% block body %}
-<section class="relative">
-<!--    <div class="absolute h-full w-full p-5 z-30 bg-[#1a1a1a80]">-->
-<!--        <div class="w-full md:w-3/5 p-10 mx-auto mt-24 bg-white rounded-2xl">-->
-<!--            <h2 class="text-xl font-bold mb-2">Download Progress</h2>-->
-<!--            <div class="relative text-center text-white h-5 w-full rounded-full bg-gray-400 overflow-hidden" id="progressContainer">-->
-<!--                <div class="absolute top-0 left-0 bg-color1 w-1/2 h-full"></div>-->
-<!--                <span class="relative inline-block z-10">50%</span>-->
-<!--            </div>-->
-
-<!--        </div>-->
-<!--    </div>-->
-    <div class="absolute w-full h-full music-bg"></div>
+<section class="relative music-bg">
     <div class="absolute w-full h-full bg-black opacity-20"></div>
-    <div class="relative py-24 flex flex-col justify-center z-10">
+    <div class="relative py-32 flex flex-col justify-center z-10">
         <div class="p-3 md:w-3/5 md:mx-auto">
         <div class="w-full">
             <img src="{{video_info.thumbnail_url}}" class="w-full h-full" alt="thumbnail">
@@ -33,7 +22,15 @@
                 <button class="bg-color4 text-black rounded-full px-5 py-1 my-auto shadow-1"><i class="uil uil-heart"></i> Save Song</button>
                 <a href="" class="bg-color3 text-white rounded-full px-5 py-1 my-auto shadow-1"
                 onclick="sendPostRequest('{{video_info.video_id}}', event)">
-                    <i class="uil uil-import"></i> Download MP3</a>
+                    <i class="uil uil-sync"></i> Covert Video</a>
+            </div>
+            <div class="hidden mt-3 text-center bg-white p-4 rounded-2xl" id="loader_div">
+                <!-- Loader -->
+                <img src="{{url_for('static', filename='img/loader.gif')}}" class="mx-auto" id="loader_gif">
+                <span class="text-xl font-bold text-black" id="downloading">MP3 Is downloading, please be patient.</span>
+                <a href="{{url_for('static', filename='{{download_link}}')}}.mp3"
+                   download class="hidden bg-color2 text-white px-3 py-1 rounded-md bold"
+               id="download_link">Download MP3 Now!</a>
             </div>
         </div>
         </div>
