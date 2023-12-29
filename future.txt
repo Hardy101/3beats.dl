@@ -1,0 +1,103 @@
+from pytube import YouTube
+from moviepy.editor import VideoFileClip
+
+def download_youtube_video(video_url, output_path='video.mp4'):
+    yt = YouTube(video_url)
+    ys = yt.streams.filter(only_audio=True).first()
+    ys.download(output_path)
+
+def convert_video_to_mp3(video_path, output_path='audio.mp3'):
+    video = VideoFileClip(video_path)
+    video.audio.write_audiofile(output_path, codec='mp3')
+    video.close()
+
+if __name__ == "__main__":
+    youtube_url = "https://www.youtube.com/watch?v=your_video_id"
+    download_youtube_video(youtube_url)
+
+    video_path = "video.mp4"  # Adjust the video file name if needed
+    convert_video_to_mp3(video_path)
+
+
+0 {'
+videoId': 'gset79KMmt0',
+'thumbnail'.thumbnails[0]['url']
+ 'thumbnail':
+    {
+    'thumbnails': [
+          {'url': 'https://i.ytimg.com/vi/gset79KMmt0/hq720.jpg?sqp=-oaymwEcCOgCEMoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLA-hzH8zOQLp8GjFJoqM7s7wlvwqg', 'width': 360, 'height': 202},
+          {'url': 'https://i.ytimg.com/vi/gset79KMmt0/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLAZwLlGh9l2reNZfjPLKZSruoYgqQ', 'width': 720, 'height': 404}
+          ]
+    },
+    //title.runs[0].text
+     'title': {'runs':
+      [{'text': 'Sia - Snowman [Official Video]'}],
+       'accessibility': {'accessibilityData': {'label': 'Sia - Snowman [Official Video] by Sia 265,913,738 views 3 years ago 2 minutes, 53 seconds'}}
+       },
+     'longBylineText': {'runs': [{'text': 'Sia', 'navigationEndpoint': {'clickTrackingParams': 'CPwBENwwGAAiEwiX34j1gbODAxWqKvEFHfvjBuE=', 'commandMetadata': {'webCommandMetadata': {'url': '/channel/UCN9HPn2fq-NL8M5_kp4RWZQ', 'webPageType': 'WEB_PAGE_TYPE_CHANNEL', 'rootVe': 3611, 'apiUrl': '/youtubei/v1/browse'}}, 'browseEndpoint': {'browseId': 'UCN9HPn2fq-NL8M5_kp4RWZQ', 'canonicalBaseUrl': '/channel/UCN9HPn2fq-NL8M5_kp4RWZQ'}}}
+     ]},
+    'publishedTimeText': {'simpleText': '3 years ago'},
+     'lengthText': {'accessibility': {'accessibilityData': {'label': '2 minutes, 53 seconds'}}, 'simpleText': '2:53'},
+      'viewCountText': {'simpleText': '265,913,738 views'},
+       'navigationEndpoint': {'clickTrackingParams': 'CPwBENwwGAAiEwiX34j1gbODAxWqKvEFHfvjBuEyBnNlYXJjaFIHU25vd21hbpoBAxD0JA==', 'commandMetadata': {'webCommandMetadata': {'url': '/watch?v=gset79KMmt0&pp=ygUHU25vd21hbg%3D%3D', 'webPageType': 'WEB_PAGE_TYPE_WATCH', 'rootVe': 3832}}, 'watchEndpoint': {'videoId': 'gset79KMmt0', 'params': 'qgMHU25vd21hbroDCwjw4pH7wsr_nY8BugMLCKjcqJyvityhwwG6AwsIzf-S8orxyfz8AboDDxINUkRnc2V0NzlLTW10MLoDCwiVgoTB4uP0huQBugMKCKzf8eaO0YO-TLoDCgiIxLvS7MyB-ie6AwsI4P_GpvCYztC_AboDCgja3L7D0-yc8T26AwoI-rHfyNmI4dpRugMKCKbd6q6RqbTZCboDCwiRoLT98NO5vtUBugMKCP7w6Z-pm__-MboDCwjs_ZLThvnxuK4BugMKCMuxrOTT6Y_yTboDCwim7vyOv4nWlsYBugMKCKbSoczLv9SHEroDCwinuvSj1euQvpUBugMLCImu1br968q6kQHyAwUNeId4Pg%3D%3D', 'playerParams': 'ygUHU25vd21hbg%3D%3D', 'watchEndpointSupportedOnesieConfig': {'html5PlaybackOnesieConfig': {'commonConfig': {'url': 'https://rr2---sn-huoob-5ccs.googlevideo.com/initplayback?source=youtube&oeis=1&c=WEB&oad=3200&ovd=3200&oaad=11000&oavd=11000&ocs=700&oewis=1&oputc=1&ofpcc=1&msp=1&odepv=1&id=82c7adefd28c9add&ip=102.90.47.84&initcwndbps=203750&mt=1703796549&oweuc='}}}}},
+        'badges': [{'metadataBadgeRenderer': {'style': 'BADGE_STYLE_TYPE_SIMPLE', 'label': 'CC', 'trackingParams': 'CPwBENwwGAAiEwiX34j1gbODAxWqKvEFHfvjBuE=', 'accessibilityData': {'label': 'Closed captions'}}}],
+         'ownerBadges': [{'metadataBadgeRenderer': {'icon': {'iconType': 'OFFICIAL_ARTIST_BADGE'}, 'style': 'BADGE_STYLE_TYPE_VERIFIED_ARTIST', 'tooltip': 'Official Artist Channel', 'trackingParams': 'CPwBENwwGAAiEwiX34j1gbODAxWqKvEFHfvjBuE=', 'accessibilityData': {'label': 'Official Artist Channel'}}}],
+          'ownerText': {'runs': [{'text': 'Sia', 'navigationEndpoint': {'clickTrackingParams': 'CPwBENwwGAAiEwiX34j1gbODAxWqKvEFHfvjBuE=', 'commandMetadata': {'webCommandMetadata': {'url': '/channel/UCN9HPn2fq-NL8M5_kp4RWZQ', 'webPageType': 'WEB_PAGE_TYPE_CHANNEL', 'rootVe': 3611, 'apiUrl': '/youtubei/v1/browse'}}, 'browseEndpoint': {'browseId': 'UCN9HPn2fq-NL8M5_kp4RWZQ', 'canonicalBaseUrl': '/channel/UCN9HPn2fq-NL8M5_kp4RWZQ'}}}]},
+           'shortBylineText': {'runs': [{'text': 'Sia', 'navigationEndpoint': {'clickTrackingParams': 'CPwBENwwGAAiEwiX34j1gbODAxWqKvEFHfvjBuE=', 'commandMetadata': {'webCommandMetadata': {'url': '/channel/UCN9HPn2fq-NL8M5_kp4RWZQ', 'webPageType': 'WEB_PAGE_TYPE_CHANNEL', 'rootVe': 3611, 'apiUrl': '/youtubei/v1/browse'}}, 'browseEndpoint': {'browseId': 'UCN9HPn2fq-NL8M5_kp4RWZQ', 'canonicalBaseUrl': '/channel/UCN9HPn2fq-NL8M5_kp4RWZQ'}}}]}, 'trackingParams': 'CPwBENwwGAAiEwiX34j1gbODAxWqKvEFHfvjBuFA3bWylP296-OCAQ==', 'showActionMenu': False, 'shortViewCountText': {'accessibility': {'accessibilityData': {'label': '265 million views'}}, 'simpleText': '265M views'}, 'menu': {'menuRenderer': {'items': [{'menuServiceItemRenderer': {'text': {'runs': [{'text': 'Add to queue'}]}, 'icon': {'iconType': 'ADD_TO_QUEUE_TAIL'}, 'serviceEndpoint': {'clickTrackingParams': 'CIACEP6YBBgSIhMIl9-I9YGzgwMVqirxBR374wbh', 'commandMetadata': {'webCommandMetadata': {'sendPost': True}}, 'signalServiceEndpoint': {'signal': 'CLIENT_SIGNAL', 'actions': [{'clickTrackingParams': 'CIACEP6YBBgSIhMIl9-I9YGzgwMVqirxBR374wbh', 'addToPlaylistCommand': {'openMiniplayer': True, 'videoId': 'gset79KMmt0', 'listType': 'PLAYLIST_EDIT_LIST_TYPE_QUEUE', 'onCreateListCommand': {'clickTrackingParams': 'CIACEP6YBBgSIhMIl9-I9YGzgwMVqirxBR374wbh', 'commandMetadata': {'webCommandMetadata': {'sendPost': True, 'apiUrl': '/youtubei/v1/playlist/create'}}, 'createPlaylistServiceEndpoint': {'videoIds': ['gset79KMmt0'], 'params': 'CAQ%3D'}}, 'videoIds': ['gset79KMmt0']}}]}}, 'trackingParams': 'CIACEP6YBBgSIhMIl9-I9YGzgwMVqirxBR374wbh'}}, {'menuServiceItemRenderer': {'text': {'runs': [{'text': 'Share'}]}, 'icon': {'iconType': 'SHARE'}, 'serviceEndpoint': {'clickTrackingParams': 'CPwBENwwGAAiEwiX34j1gbODAxWqKvEFHfvjBuE=', 'commandMetadata': {'webCommandMetadata': {'sendPost': True, 'apiUrl': '/youtubei/v1/share/get_share_panel'}}, 'shareEntityServiceEndpoint': {'serializedShareEntity': 'Cgtnc2V0NzlLTW10MA%3D%3D', 'commands': [{'clickTrackingParams': 'CPwBENwwGAAiEwiX34j1gbODAxWqKvEFHfvjBuE=', 'openPopupAction': {'popup': {'unifiedSharePanelRenderer': {'trackingParams': 'CP8BEI5iIhMIl9-I9YGzgwMVqirxBR374wbh', 'showLoadingSpinner': True}}, 'popupType': 'DIALOG', 'beReused': True}}]}}, 'trackingParams': 'CPwBENwwGAAiEwiX34j1gbODAxWqKvEFHfvjBuE=', 'hasSeparator': True}}], 'trackingParams': 'CPwBENwwGAAiEwiX34j1gbODAxWqKvEFHfvjBuE=', 'accessibility': {'accessibilityData': {'label': 'Action menu'}}}}, 'channelThumbnailSupportedRenderers': {'channelThumbnailWithLinkRenderer': {'thumbnail': {'thumbnails': [{'url': 'https://yt3.ggpht.com/4cFOo3R_D4gOVVJPEt8aoff-Fi2eRjM5Nxz5fDXpw0WS57go_buPi0kvhehvTnBZeF3qSmAT=s88-c-k-c0x00ffffff-no-rj', 'width': 68, 'height': 68}]}, 'navigationEndpoint': {'clickTrackingParams': 'CPwBENwwGAAiEwiX34j1gbODAxWqKvEFHfvjBuE=', 'commandMetadata': {'webCommandMetadata': {'url': '/channel/UCN9HPn2fq-NL8M5_kp4RWZQ', 'webPageType': 'WEB_PAGE_TYPE_CHANNEL', 'rootVe': 3611, 'apiUrl': '/youtubei/v1/browse'}}, 'browseEndpoint': {'browseId': 'UCN9HPn2fq-NL8M5_kp4RWZQ'}}, 'accessibility': {'accessibilityData': {'label': 'Go to channel'}}}}, 'thumbnailOverlays': [{'thumbnailOverlayTimeStatusRenderer': {'text': {'accessibility': {'accessibilityData': {'label': '2 minutes, 53 seconds'}}, 'simpleText': '2:53'}, 'style': 'DEFAULT'}}, {'thumbnailOverlayToggleButtonRenderer': {'isToggled': False, 'untoggledIcon': {'iconType': 'WATCH_LATER'}, 'toggledIcon': {'iconType': 'CHECK'}, 'untoggledTooltip': 'Watch later', 'toggledTooltip': 'Added', 'untoggledServiceEndpoint': {'clickTrackingParams': 'CP4BEPnnAxgDIhMIl9-I9YGzgwMVqirxBR374wbh', 'commandMetadata': {'webCommandMetadata': {'sendPost': True, 'apiUrl': '/youtubei/v1/browse/edit_playlist'}}, 'playlistEditEndpoint': {'playlistId': 'WL', 'actions': [{'addedVideoId': 'gset79KMmt0', 'action': 'ACTION_ADD_VIDEO'}]}}, 'toggledServiceEndpoint': {'clickTrackingParams': 'CP4BEPnnAxgDIhMIl9-I9YGzgwMVqirxBR374wbh', 'commandMetadata': {'webCommandMetadata': {'sendPost': True, 'apiUrl': '/youtubei/v1/browse/edit_playlist'}}, 'playlistEditEndpoint': {'playlistId': 'WL', 'actions': [{'action': 'ACTION_REMOVE_VIDEO_BY_VIDEO_ID', 'removedVideoId': 'gset79KMmt0'}]}}, 'untoggledAccessibility': {'accessibilityData': {'label': 'Watch later'}}, 'toggledAccessibility': {'accessibilityData': {'label': 'Added'}}, 'trackingParams': 'CP4BEPnnAxgDIhMIl9-I9YGzgwMVqirxBR374wbh'}}, {'thumbnailOverlayToggleButtonRenderer': {'untoggledIcon': {'iconType': 'ADD_TO_QUEUE_TAIL'}, 'toggledIcon': {'iconType': 'PLAYLIST_ADD_CHECK'}, 'untoggledTooltip': 'Add to queue', 'toggledTooltip': 'Added', 'untoggledServiceEndpoint': {'clickTrackingParams': 'CP0BEMfsBBgEIhMIl9-I9YGzgwMVqirxBR374wbh', 'commandMetadata': {'webCommandMetadata': {'sendPost': True}}, 'signalServiceEndpoint': {'signal': 'CLIENT_SIGNAL', 'actions': [{'clickTrackingParams': 'CP0BEMfsBBgEIhMIl9-I9YGzgwMVqirxBR374wbh', 'addToPlaylistCommand': {'openMiniplayer': True, 'videoId': 'gset79KMmt0', 'listType': 'PLAYLIST_EDIT_LIST_TYPE_QUEUE', 'onCreateListCommand': {'clickTrackingParams': 'CP0BEMfsBBgEIhMIl9-I9YGzgwMVqirxBR374wbh', 'commandMetadata': {'webCommandMetadata': {'sendPost': True, 'apiUrl': '/youtubei/v1/playlist/create'}}, 'createPlaylistServiceEndpoint': {'videoIds': ['gset79KMmt0'], 'params': 'CAQ%3D'}}, 'videoIds': ['gset79KMmt0']}}]}}, 'untoggledAccessibility': {'accessibilityData': {'label': 'Add to queue'}}, 'toggledAccessibility': {'accessibilityData': {'label': 'Added'}}, 'trackingParams': 'CP0BEMfsBBgEIhMIl9-I9YGzgwMVqirxBR374wbh'}}, {'thumbnailOverlayNowPlayingRenderer': {'text': {'runs': [{'text': 'Now playing'}]}}}, {'thumbnailOverlayLoadingPreviewRenderer': {'text': {'runs': [{'text': 'Keep hovering to play'}]}}}], 'richThumbnail': {'movingThumbnailRenderer': {'movingThumbnailDetails': {'thumbnails': [{'url': 'https://i.ytimg.com/an_webp/gset79KMmt0/mqdefault_6s.webp?du=3000&sqp=CNK6t6wG&rs=AOn4CLCw1JDVEQz7tMGmruiY7aNgXsgbhw', 'width': 320, 'height': 180}], 'logAsMovingThumbnail': True}, 'enableHoveredLogging': True, 'enableOverlay': True}}, 'detailedMetadataSnippets': [{'snippetText': {'runs': [{'text': 'Christmas came early Get into the holiday spirit with the video for '}, {'text': 'Snowman', 'bold': True}, {'text': " ☃️ Listen to 'Everyday Is Christmas' ("}, {'text': 'Snowman', 'bold': True}, {'text': '\xa0...'}]}, 'snippetHoverText': {'runs': [{'text': 'From the video description'}]}, 'maxOneLine': False}], 'inlinePlaybackEndpoint': {'clickTrackingParams': 'CPwBENwwGAAiEwiX34j1gbODAxWqKvEFHfvjBuEyBnNlYXJjaFIHU25vd21hbpoBAxD0JA==', 'commandMetadata': {'webCommandMetadata': {'url': '/watch?v=gset79KMmt0&pp=YAHIAQE%3D', 'webPageType': 'WEB_PAGE_TYPE_WATCH', 'rootVe': 3832}}, 'watchEndpoint': {'videoId': 'gset79KMmt0', 'params': 'qgMHU25vd21hbroDCwjw4pH7wsr_nY8BugMLCKjcqJyvityhwwG6AwsIzf-S8orxyfz8AboDDxINUkRnc2V0NzlLTW10MLoDCwiVgoTB4uP0huQBugMKCKzf8eaO0YO-TLoDCgiIxLvS7MyB-ie6AwsI4P_GpvCYztC_AboDCgja3L7D0-yc8T26AwoI-rHfyNmI4dpRugMKCKbd6q6RqbTZCboDCwiRoLT98NO5vtUBugMKCP7w6Z-pm__-MboDCwjs_ZLThvnxuK4BugMKCMuxrOTT6Y_yTboDCwim7vyOv4nWlsYBugMKCKbSoczLv9SHEroDCwinuvSj1euQvpUBugMLCImu1br968q6kQHyAwUNeId4Pg%3D%3D', 'playerParams': 'YAHIAQE%3D', 'playerExtraUrlParams': [{'key': 'inline', 'value': '1'}], 'watchEndpointSupportedOnesieConfig': {'html5PlaybackOnesieConfig': {'commonConfig': {'url': 'https://rr2---sn-huoob-5ccs.googlevideo.com/initplayback?source=youtube&oeis=1&c=WEB&oad=3200&ovd=3200&oaad=11000&oavd=11000&ocs=700&oewis=1&oputc=1&ofpcc=1&msp=1&odepv=1&id=82c7adefd28c9add&ip=102.90.47.84&initcwndbps=203750&mt=1703796549&oweuc='}}}}}, 'searchVideoResultEntityKey': 'Egtnc2V0NzlLTW10MCDnAigB'}
+
+
+////////////////////
+  <div class="result flex gap-4 result shadow-1 p-2 rounded-md my-auto">
+            <img src="" class="w-2/5" id="thumbnail" alt="" />
+            <div class="w-3/5">
+              <span class="block text-xl font-bold my-2">Snowman</span>
+              <div class="action">
+                <!-- Audio -->
+                <audio id="music1" class="music">
+                  <source src="{{ url_for('static', filename='lonely.mp3') }}" type="audio/mp3" />
+                  Your browser does not support the audio element. Please use a
+                  modern browser.
+                </audio>
+                <div class="action-buttons flex justify-between gap-3">
+                  <button
+                    class="text-white bg-color3 w-1/2 py-1 rounded-sm shadow-md"
+                  >
+                    <i class="uil uil-import"></i> Download
+                  </button>
+                  <button
+                    class="text-white bg-color3 w-1/2 py-1 rounded-sm shadow-md"
+                    id="play_audio1"
+                    onclick="playAudio(document.getElementById('music1'), this, document.getElementById('pause_audio1'))"
+                  >
+                    <i class="uil uil-play"></i> Play
+                  </button>
+                  <button
+                    class="hidden text-white bg-color3 w-1/2 py-1 rounded-sm shadow-md"
+                    id="pause_audio1"
+                    onclick="pauseAudio(document.getElementById('music1'), this, document.getElementById('play_audio1'))"
+                  >
+                    <i class="uil uil-pause"></i> Pause
+                  </button>
+                </div>
+                <!-- Action Buttons End -->
+                <div class="action-music flex gap-2 mt-2">
+                  <i class="uil uil-pause"></i>
+                  <div
+                    class="relative rounded-full h-0.5 w-full bg-gray-200 my-auto"
+                  >
+                    <div
+                      class="bg-color3 h-full progress-bar"
+                    ></div>
+                  </div>
+                </div>
+              </div>
+              <div class="flex gap-3 video_data">
+                <span class="font-bold text-color3"><i class="uil uil-thumbs-up"></i> 220.2M</span>
+                <span class="font-bold text-color3"><i class="uil uil-eye font-bold"></i> 1.2B</span>
+              </div>
+            </div>
+          </div>
+
+
+
+

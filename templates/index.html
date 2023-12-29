@@ -1,0 +1,144 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>3beats</title>
+{% endblock %}
+
+{% block body %}
+    <!-- hero Section -->
+    <section
+      class="relative bg-gray-200 h-screen grid place-items-center py-16"
+      id="hero"
+    >
+      <div class="absolute w-full h-full md:hidden music-bg"></div>
+      <div class="absolute w-full h-full bg-black opacity-30 md:hidden"></div>
+      <div class="hidden md:block absolute right-0 h-full">
+        <img src="{{ url_for('static', filename='img/woman.png') }}" class="w-full h-full" alt="" />
+      </div>
+      <div class="p-5 md:p-10 mr-auto text-gray-100 md:text-black z-10 md:w-3/5">
+        <h1
+          class="animate__animated animate__fadeInUp slideshow-text text-3xl font-bold my-2"
+          id="text1"
+        >
+          Embark on a Musical Journey: Discover Harmony and Explore the Melodies
+          That Resonate with Your Soul
+        </h1>
+        <h1
+          class="hidden animate__animated animate__fadeInUp slideshow-text text-3xl font-bold my-2"
+          id="text2"
+        >
+          Unlock musical bliss at Harmony Haven, where every note is a journey.
+        </h1>
+        <h1
+          class="hidden animate__animated animate__fadeInUp slideshow-text text-3xl font-bold my-2"
+          id="text3"
+        >
+          Dive into the rhythm at EchoSphere, where melodies paint emotions.
+        </h1>
+        <p class="text-xl">
+          Enter the realm of music discovery - search and let the
+          melodies find you on 3beats.dl
+        </p>
+        <div class="mt-10">
+          <form class="py-5 rounded-md px-3 bg-white md:rounded-full" action="/" method="POST">
+            <div class="flex gap-3 justify-between flex-col md:flex-row">
+              <div class="w-full ml-2">
+                <label class="block text-gray-400 font-bold text-sm"
+                  >Search Artist, Song title, Album</label
+                >
+                <input
+                  type="text"
+                  name="search_music"
+                  class="inline-block w-full text-black bg-transparent outline-none border-b-2 py-1 focus:border-color3"
+                />
+              </div>
+
+              <input
+                type="submit"
+                value="SEARCH"
+                class="bg-color3 text-white py-1 px-4 rounded-2xl my-auto"
+              />
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+    <!-- Search Section -->
+    <section id="search-section">
+      <div class="p-5 md:p-10">
+        <div class="search-header flex justify-between">
+          <h2 class="text-2xl font-bold my-auto">Results (2)</h2>
+          <p class="my-auto mb-2">
+            <span class="font-bold">SORT BY</span>
+            <select class="bg-gray-100 py-1 px-2 outline-none">
+              <option value="">Newest</option>
+              <option value="">Most Views</option>
+              <option value="">Most Likes</option>
+            </select>
+          </p>
+        </div>
+        <!-- Divider -->
+        <div class="rounded-lg w-full h-0.5 bg-gray-200 mx-auto"></div>
+        <div class="search-body grid gap-10 grid-cols-1 md:grid-cols-3 my-5" id="video-list">
+        <!-- Result -->
+        {% for item in data %}
+         <div class="result flex gap-4 result shadow-1 p-2 rounded-md my-auto">
+            <img src="{{item.thumbnail.thumbnails[0].url}}" class="w-2/5" id="thumbnail" alt="" />
+            <div class="w-3/5">
+              <span class="block text-xl font-bold my-2">{{item.title.runs[0].text}}</span>
+              <div class="action">
+                <!-- Audio -->
+                <audio id="music1" class="music">
+                  <source src="{{ url_for('static', filename='lonely.mp3') }}" type="audio/mp3" />
+                  Your browser does not support the audio element. Please use a
+                  modern browser.
+                </audio>
+                <div class="action-buttons flex justify-between gap-3">
+                  <a
+                    href="{{url_for('video', video_id=item.videoId)}}"
+                    target="_blank"
+                    class="inline-block text-center text-white bg-color3 w-full py-1 rounded-sm shadow-md"
+                    id="{{item.videoId}}"
+                  >
+                    <i class="uil uil-import"></i> Download
+                  </a>
+<!--                  <button-->
+<!--                    class="text-white bg-color3 w-1/2 py-1 rounded-sm shadow-md"-->
+<!--                    id="play_audio1"-->
+<!--                    onclick="playAudio(document.getElementById('music1'), this, document.getElementById('pause_audio1'))"-->
+<!--                  >-->
+<!--                    <i class="uil uil-play"></i> Play-->
+<!--                  </button>-->
+<!--                  <button-->
+<!--                    class="hidden text-white bg-color3 w-1/2 py-1 rounded-sm shadow-md"-->
+<!--                    id="pause_audio1"-->
+<!--                    onclick="pauseAudio(document.getElementById('music1'), this, document.getElementById('play_audio1'))"-->
+<!--                  >-->
+<!--                    <i class="uil uil-pause"></i> Pause-->
+<!--                  </button>-->
+                </div>
+                <!-- Action Buttons End -->
+<!--                <div class="action-music flex gap-2 mt-2">-->
+<!--                  <i class="uil uil-pause"></i>-->
+<!--                  <div-->
+<!--                    class="relative rounded-full h-0.5 w-full bg-gray-200 my-auto"-->
+<!--                  >-->
+<!--                    <div-->
+<!--                      class="bg-color3 h-full progress-bar"-->
+<!--                    ></div>-->
+<!--                  </div>-->
+<!--                </div>-->
+              </div>
+              <div class="flex gap-3 video_data mt-2">
+                <span class="font-bold text-color3"><i class="uil uil-clock"></i> {{item.lengthText.simpleText}}</span>
+                <p class="font-bold text-color3"><i class="uil uil-eye font-bold"></i>
+                  <span class="view_count">{{item.viewCountText.simpleText}}</span>M</p>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+        </div>
+      </div>
+    </section>
+<!--<script src="{{url_for('static', filename='js/async.js')}}"></script>-->
+{% endblock %}

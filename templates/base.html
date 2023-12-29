@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/tailwind.css')}}" />
+    <script src="{{url_for('static', filename='js/tailwind.js')}}"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unicons.iconscout.com/release/v4.0.8/css/line.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    {% block head %}{% endblock %}
+</head>
+<body class="relative">
+     <!-- Sidebar -->
+    <div
+      class="hidden fixed animate__animated animate__zoomIn animate__faster w-full h-full bg-white z-30 overflow-hidden"
+      id="sidebar"
+    >
+      <button
+        class="absolute right-3 top-2 rounded-2xl shadow-lg px-5 py-1 bg-color1 text-white"
+        id="closebtn"
+      >
+        <i class="uil uil-multiply"></i> Close
+      </button>
+      <ul class="mt-12 py-5 px-3 text-2xl leading-loose">
+        <li class="">
+          <a href="{{ url_for('index') }}" class="block text-color2 font-bold"
+            ><i class="uil uil-estate"></i> Home</a
+          >
+        </li>
+        <li>
+          <a href="" class="block"
+            ><i class="uil uil-image-search"></i> Browse</a
+          >
+        </li>
+        <li>
+          <a href="" class="block flex flex-row justify-between">
+            <span class="my-auto"
+              ><i class="uil uil-heart"></i> Saved Songs</span
+            >
+            <span class="bg-color3 text-white px-3 rounded-full my-auto"
+              >20</span
+            >
+          </a>
+        </li>
+        <h2 class="mt-2 text-gray-400">Products</h2>
+        <li>
+          <a href=""><i class="uil uil-video"></i> Video Downloader</a>
+        </li>
+      </ul>
+    </div>
+    <!-- Transparent Navbar -->
+    <nav
+      class="navbar animate__animated animate__fadeInDown text-gray-100 md:text-black fixed w-full top-0 bg-transparent z-20"
+      id="nav-1"
+    >
+      <div>
+        <div class="nav-header flex justify-between px-5 py-5">
+          <a href="{{ url_for('index') }}" class="logo font-bold text-2xl my-auto">
+            <i class="uil uil-music-note"></i>3beats<span class="text-color3"
+              >.dl</span
+            ></a
+          >
+          <ul class="hidden gap-5 font-bold my-auto md:flex">
+            <li><a href="{{ url_for('index') }}">Home</a></li>
+            <li><a href="#">Browse</a></li>
+            <li><a href="#">Video Downloader</a></li>
+          </ul>
+          <ul class="flex gap-5 flex-row my-auto">
+            <li class="my-auto">
+              <button class="text-3xl"><i class="uil uil-bell"></i></button>
+            </li>
+            <li class="inline-block md:hidden my-auto">
+              <button
+                class="group openbtn flex flex-col gap-1 text-center py-2 px-2 bg-gray-100 rounded-sm hover:bg-color1"
+              >
+                <span
+                  class="block h-1 w-6 rounded-full bg-color1 group-hover:bg-white"
+                ></span>
+                <span
+                  class="block h-1 w-6 rounded-full bg-color1 group-hover:bg-white"
+                ></span>
+                <span
+                  class="block h-1 w-6 rounded-full bg-color1 group-hover:bg-white"
+                ></span>
+              </button>
+            </li>
+          </ul>
+        </div>
+        <!-- <div class="nav-footer px-5 py-3">
+          <form action="" class="w-4/5 mx-auto rounded-2xl overflow-hidden">
+            <input
+              type="search"
+              name=""
+              id=""
+              class="w-full bg-gray-100 rounded-2xl py-1 px-4 outline-none"
+            />
+          </form>
+        </div> -->
+      </div>
+    </nav>
+    <!-- Dark Purple Navbar -->
+    <nav
+      class="hidden navbar animate__animated animate__fadeInDown text-white fixed w-full top-0 bg-color1 z-20"
+      id="nav-2"
+    >
+      <div>
+        <div class="nav-header flex justify-between px-5 py-5">
+          <a href="{{ url_for('index') }}" class="logo font-bold text-2xl my-auto">
+            <i class="uil uil-music-note"></i>3beats<span class="text-color3"
+              >.dl</span
+            ></a
+          >
+          <ul class="hidden gap-5 font-bold my-auto md:flex">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Browse</a></li>
+            <li><a href="#">Video Downloader</a></li>
+          </ul>
+          <ul class="flex gap-5 flex-row my-auto">
+            <li class="my-auto">
+              <button class="text-3xl"><i class="uil uil-bell"></i></button>
+            </li>
+            <li class="inline-block md:hidden my-auto">
+              <button
+                class="openbtn flex flex-col gap-1 text-center py-2 px-2 bg-white rounded-sm"
+              >
+                <span class="block h-1 w-6 rounded-full bg-color1"></span>
+                <span class="block h-1 w-6 rounded-full bg-color1"></span>
+                <span class="block h-1 w-6 rounded-full bg-color1"></span>
+              </button>
+            </li>
+          </ul>
+        </div>
+        <!-- <div class="nav-footer px-5 py-3">
+          <form action="" class="w-4/5 mx-auto rounded-2xl overflow-hidden">
+            <input
+              type="search"
+              name=""
+              id=""
+              class="w-full bg-gray-100 rounded-2xl py-1 px-4 outline-none"
+            />
+          </form>
+        </div> -->
+      </div>
+    </nav>
+
+    {% block body %}{% endblock %}
+     <!-- Footer -->
+    <footer>
+          <div class="bg-color1 text-white text-center py-5">
+            <div>
+              <h2 class="text-3xl font-bold">
+                3beats<span class="text-color3">.dl</span>
+              </h2>
+              <span>Terms of use</span>
+              <span class="text-3xl"
+                ><img
+                  src="{{ url_for('static', filename='img/icons8-dot-30.png') }}"
+                  class="inline-block invert scale-50 mt-2"
+                  alt=""
+              /></span>
+              <span>Privacy Policy</span>
+              <div class="flex justify-center gap-5">
+                <a href="mailto:eghordia130@gmail.com"
+                  ><span class="font-bold">Email: </span>eghordia130@gmail.com
+                  </a>
+                <a href="https://twitter.com/Eordia_"><span class="font-bold">Twitter: </span>@Eordia_</a>
+                <a href="https://twitter.com/Eordia_"
+                  ><span class="font-bold">Github: </span>@Hardy101</a>
+              </div>
+            </div>
+          </div>
+</footer>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Video</title>
+{% endblock %}
+
+{% block body %}
+<section class="relative">
+<!--    <div class="absolute h-full w-full p-5 z-30 bg-[#1a1a1a80]">-->
+<!--        <div class="w-full md:w-3/5 p-10 mx-auto mt-24 bg-white rounded-2xl">-->
+<!--            <h2 class="text-xl font-bold mb-2">Download Progress</h2>-->
+<!--            <div class="relative text-center text-white h-5 w-full rounded-full bg-gray-400 overflow-hidden" id="progressContainer">-->
+<!--                <div class="absolute top-0 left-0 bg-color1 w-1/2 h-full"></div>-->
+<!--                <span class="relative inline-block z-10">50%</span>-->
+<!--            </div>-->
+
+<!--        </div>-->
+<!--    </div>-->
+    <div class="absolute w-full h-full music-bg"></div>
+    <div class="absolute w-full h-full bg-black opacity-20"></div>
+    <div class="relative py-24 flex flex-col justify-center z-10">
+        <div class="p-3 md:w-3/5 md:mx-auto">
+        <div class="w-full">
+            <img src="{{video_info.thumbnail_url}}" class="w-full h-full" alt="thumbnail">
+        </div>
+        <div class="my-3 text-white">
+            <h1 class="text-3xl font-bold ">{{video_info.title}}</h1>
+            <h2 class=""><span class="text-xl font-bold">Source:</span>
+                <a href="https://www.youtube.com/watch?v={{video_info.video_id}}"
+                   target="_blank">https://www.youtube.com/watch?v={{video_info.video_id}}</a></h2>
+            <div class="mt-3 flex gap-4">
+                <button class="bg-gray-200 text-black rounded-full py-1 px-5 my-auto shadow-1"><i class="uil uil-share"></i> Share</button>
+                <button class="bg-color4 text-black rounded-full px-5 py-1 my-auto shadow-1"><i class="uil uil-heart"></i> Save Song</button>
+                <a href="" class="bg-color3 text-white rounded-full px-5 py-1 my-auto shadow-1"
+                onclick="sendPostRequest('{{video_info.video_id}}', event)">
+                    <i class="uil uil-import"></i> Download MP3</a>
+            </div>
+        </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

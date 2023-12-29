@@ -1,0 +1,19 @@
+@layer utilities {
+  * {
+    transition: all 0.3s ease-in-out;
+  }
+  body {
+    font-family: "Kalam", cursive;
+  }
+  .womanwithheadphone-bg {
+    background-image: url(../img/woman\ with\ headphones.jpg);
+    background-size: cover;
+  }
+  .shadow-1 {
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  }
+  .music-bg {
+    background-image: url(../img/music-bg1.jpg);
+    background-size: cover;
+  }
+}

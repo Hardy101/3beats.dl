@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Video</title>
+{% endblock %}
+
+{% block body %}
+<section class="">
+    <div class="py-24 flex flex-col justify-center">
+        <div class="p-3 md:w-3/5 mx-auto">
+        <div class="w-full">
+            <iframe class="w-full" height="500" src="https://www.youtube.com/embed/yk49mflG38U?si=6hZufhDDTwYBTv5D"
+            title="YouTube video player" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen></iframe>
+        </div>
+        <div class="my-3">
+            <h1 class="text-3xl font-bold ">Sia - Snowman</h1>
+            <h2 class=""><span class="text-xl font-bold">Quality:</span> HD, 720P, 480P, 320P and 240P</h2>
+            <h2 class=""><span class="text-xl font-bold">Source:</span>
+                <a href="https://youtu.be/yk49mflG38U" target="_blank">https://youtu.be/yk49mflG38U</a></h2>
+<!--            <div class="mt-3">-->
+<!--                <button class="bg-gray-200 rounded-full py-1 px-5"><i class="uil uil-share text-2xl"></i></button>-->
+<!--                -->
+<!--            </div>-->
+            <div class="mt-3">
+                <h2 class="text-xl font-bold">Download Links</h2>
+                <div class="flex gap-3 flex-wrap">
+                    <button class="bg-color3 text-white rounded-md px-2 py-1"><i class="uil uil-import"></i> Download HD</button>
+                    <button class="bg-color3 text-white rounded-md px-2 py-1"><i class="uil uil-import"></i> Download 720P</button>
+                    <button class="bg-color3 text-white rounded-md px-2 py-1"><i class="uil uil-import"></i> Download 480P</button>
+                    <button class="bg-color3 text-white rounded-md px-2 py-1"><i class="uil uil-import"></i> Download 320P</button>
+                    <button class="bg-color3 text-white rounded-md px-2 py-1"><i class="uil uil-import"></i> Download 240P</button>
+                </div>
+            </div>
+        </div>
+        </div>
+
+
+    </div>
+</section>
+{% endblock %}
