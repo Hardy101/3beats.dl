@@ -16,4 +16,12 @@
     background-image: url(../img/music-bg1.jpg);
     background-size: cover;
   }
+  .gray-bg {
+    background-image: url(../img/bg-gray1.jpg);
+    background-size: cover;
+  }
+  .music-bg2 {
+    background-image: url(../img/music-bg2.jpg);
+    background-size: cover;
+  }
 }

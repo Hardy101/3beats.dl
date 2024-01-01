@@ -5,33 +5,45 @@
 {% endblock %}
 
 {% block body %}
-<section class="">
+<section class="relative gray-bg">
+<!--    <div class="absolute w-full h-full bg-black opacity-10"></div>-->
     <div class="py-24 flex flex-col justify-center">
         <div class="p-3 md:w-3/5 mx-auto">
         <div class="w-full">
-            <iframe class="w-full" height="500" src="https://www.youtube.com/embed/yk49mflG38U?si=6hZufhDDTwYBTv5D"
-            title="YouTube video player" frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen></iframe>
         </div>
         <div class="my-3">
-            <h1 class="text-3xl font-bold ">Sia - Snowman</h1>
-            <h2 class=""><span class="text-xl font-bold">Quality:</span> HD, 720P, 480P, 320P and 240P</h2>
+            <h1 class="text-3xl font-bold ">{{video_data.title}}</h1>
+            <h2 class=""><span class="text-xl font-bold">Quality:</span>{% for res in resolutions %}{{res}}{%endfor%}</h2>
             <h2 class=""><span class="text-xl font-bold">Source:</span>
-                <a href="https://youtu.be/yk49mflG38U" target="_blank">https://youtu.be/yk49mflG38U</a></h2>
-<!--            <div class="mt-3">-->
-<!--                <button class="bg-gray-200 rounded-full py-1 px-5"><i class="uil uil-share text-2xl"></i></button>-->
-<!--                -->
-<!--            </div>-->
+                <a href="{{youtube_url}}" target="_blank">{{youtube_url}}</a></h2>
             <div class="mt-3">
                 <h2 class="text-xl font-bold">Download Links</h2>
                 <div class="flex gap-3 flex-wrap">
-                    <button class="bg-color3 text-white rounded-md px-2 py-1"><i class="uil uil-import"></i> Download HD</button>
-                    <button class="bg-color3 text-white rounded-md px-2 py-1"><i class="uil uil-import"></i> Download 720P</button>
-                    <button class="bg-color3 text-white rounded-md px-2 py-1"><i class="uil uil-import"></i> Download 480P</button>
-                    <button class="bg-color3 text-white rounded-md px-2 py-1"><i class="uil uil-import"></i> Download 320P</button>
-                    <button class="bg-color3 text-white rounded-md px-2 py-1"><i class="uil uil-import"></i> Download 240P</button>
+                    <form action="{{ url_for('download') }}" method="POST">
+                        {% for resolution in resolutions %}
+                        <button class="bg-color3 text-white rounded-md px-2 py-1" name="resolution" value="{{resolution}}">
+                            <i class="uil uil-import"></i> Download {{resolution}}
+                        </button>
+                        <input type="hidden" name="youtube_url" value="{{ youtube_url }}">
+                        {% endfor %}
+                    </form>
                 </div>
+            </div>
+        <!-- Download Waiting -->
+        <div class="animate__animated animate__bounceIn mt-3 text-center bg-white p-4 rounded-2xl" id="loader_div">
+                <!-- Loader -->
+                <img src="{{url_for('static', filename='img/loader.gif')}}" class="hidden mx-auto" id="loader_gif">
+                <span class="text-xl font-bold text-black" id="downloading">Video Is Converting, please be patient.</span>
+                <form action="/" method="POST">
+                    <input id="hidden_id" type="hidden" name="" value="{{youtube_url}}">
+<!--                    <button class="block w-full bg-color2 text-white px-3 py-1 rounded-md bold mt-5"-->
+<!--                   id="download_link">Download MP3 Now!</button>-->
+                    {% if link %}
+                    <a href="{{link}}"
+                       download class="block bg-color2 text-white px-3 py-1 rounded-md bold mt-5"
+                   id="download_link">Download MP3 Now!</a>
+                    {% endif %}
+                </form>
             </div>
         </div>
         </div>

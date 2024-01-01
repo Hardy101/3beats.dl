@@ -59,6 +59,9 @@
         <li>
           <a href=""><i class="uil uil-video"></i> Video Downloader</a>
         </li>
+          <li>
+          <a href=""><i class="uil uil-sync"></i> Video to MP3 Converter</a>
+        </li>
       </ul>
     </div>
     <!-- Transparent Navbar -->
@@ -74,9 +77,10 @@
             ></a
           >
           <ul class="hidden gap-5 font-bold my-auto md:flex">
-            <li><a href="{{ url_for('index') }}">Home</a></li>
+           <li><a href="{{ url_for('index') }}">Home</a></li>
             <li><a href="#">Browse</a></li>
-            <li><a href="#">Video Downloader</a></li>
+            <li><a href="">YT Video Downloader</a></li>
+            <li><a href="#">Video to MP3 Converter</a></li>
           </ul>
           <ul class="flex gap-5 flex-row my-auto">
             <li class="my-auto">
@@ -124,9 +128,10 @@
             ></a
           >
           <ul class="hidden gap-5 font-bold my-auto md:flex">
-            <li><a href="#">Home</a></li>
+            <li><a href="{{ url_for('index') }}">Home</a></li>
             <li><a href="#">Browse</a></li>
-            <li><a href="#">Video Downloader</a></li>
+            <li><a href="#">YT Video Downloader</a></li>
+            <li><a href="#">Video to MP3 Converter</a></li>
           </ul>
           <ul class="flex gap-5 flex-row my-auto">
             <li class="my-auto">
@@ -172,13 +177,11 @@
                   alt=""
               /></span>
               <span>Privacy Policy</span>
-              <div class="flex justify-center gap-5">
+              <div class="flex flex-col justify-center mt-2">
+                  <span class="font-bold">Contact</span>
                 <a href="mailto:eghordia130@gmail.com"
-                  ><span class="font-bold">Email: </span>eghordia130@gmail.com
+                  >eghordia130@gmail.com
                   </a>
-                <a href="https://twitter.com/Eordia_"><span class="font-bold">Twitter: </span>@Eordia_</a>
-                <a href="https://twitter.com/Eordia_"
-                  ><span class="font-bold">Github: </span>@Hardy101</a>
               </div>
             </div>
           </div>

@@ -56,7 +56,7 @@
               <input
                 type="submit"
                 value="SEARCH"
-                class="bg-color3 text-white py-1 px-4 rounded-2xl my-auto"
+                class="bg-color3 text-white py-1 px-4 rounded-2xl my-auto cursor-pointer"
               />
             </div>
           </form>
@@ -67,7 +67,7 @@
     <section id="search-section">
       <div class="p-5 md:p-10">
         <div class="search-header flex justify-between">
-          <h2 class="text-2xl font-bold my-auto">Results (2)</h2>
+          <h2 class="text-2xl font-bold my-auto">Results</h2>
           <p class="my-auto mb-2">
             <span class="font-bold">SORT BY</span>
             <select class="bg-gray-100 py-1 px-2 outline-none">
@@ -82,26 +82,31 @@
         <div class="search-body grid gap-10 grid-cols-1 md:grid-cols-3 my-5" id="video-list">
         <!-- Result -->
         {% for item in data %}
-         <div class="result flex gap-4 result shadow-1 p-2 rounded-md my-auto">
-            <img src="{{item.thumbnail.thumbnails[0].url}}" class="w-2/5" id="thumbnail" alt="" />
+         <div class="result animate__animated animate__bounceIn flex gap-4 result shadow-1 p-2 rounded-md my-auto">
+            <img src="{{item.thumbnail.thumbnails[0].url}}" class="w-2/5 my-auto" id="thumbnail" alt="" />
             <div class="w-3/5">
-              <span class="block text-xl font-bold my-2">{{item.title.runs[0].text}}</span>
+              <span class="block font-bold my-2">{{item.title.runs[0].text}}</span>
               <div class="action">
-                <!-- Audio -->
-                <audio id="music1" class="music">
-                  <source src="{{ url_for('static', filename='lonely.mp3') }}" type="audio/mp3" />
-                  Your browser does not support the audio element. Please use a
-                  modern browser.
-                </audio>
+<!--                 Audio -->
+<!--                <audio id="music1" class="music">-->
+<!--                  <source src="{{ url_for('static', filename='lonely.mp3') }}" type="audio/mp3" />-->
+<!--                  Your browser does not support the audio element. Please use a-->
+<!--                  modern browser.-->
+<!--                </audio>-->
                 <div class="action-buttons flex justify-between gap-3">
                   <a
                     href="{{url_for('video', video_id=item.videoId)}}"
                     target="_blank"
-                    class="inline-block text-center text-white bg-color3 w-full py-1 rounded-sm shadow-md"
-                    id="{{item.videoId}}"
-                  >
-                    <i class="uil uil-import"></i> Download
+                    class="inline-block text-white bg-color3 py-1 px-4 rounded-sm shadow-md"
+                  >Audio <i class="uil uil-music text-xl"></i>
                   </a>
+                  <a
+                    href="{{url_for('video_downloader', video_id=item.videoId)}}"
+                    target="_blank"
+                    class="inline-block text-white bg-color3 py-1 px-4 rounded-sm shadow-md"
+                  >Video <i class="uil uil-video text-xl"></i>
+                  </a>
+
 <!--                  <button-->
 <!--                    class="text-white bg-color3 w-1/2 py-1 rounded-sm shadow-md"-->
 <!--                    id="play_audio1"-->

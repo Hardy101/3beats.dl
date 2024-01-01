@@ -87,6 +87,7 @@ view_count_span.forEach((view_count)=>{
     view_count.textContent = parseInt(view_count.textContent)
 })
 
+// Recover sendPostRequest()
 function sendPostRequest(dynamicPart, event) {
     event.preventDefault();
 
@@ -95,20 +96,19 @@ function sendPostRequest(dynamicPart, event) {
     loader_gif = document.getElementById('loader_gif')
     downloading = document.getElementById('downloading')
     download_link = document.getElementById('download_link')
+    download_form = document.getElementById('form_download')
 
     if (confirmation){
         let dynamicUrl = '/video/' + dynamicPart;
-
         fetch(dynamicUrl, {
             method: 'POST',
         })
         .then(response => response.text())  // Assuming the response is plain text
         .then(data => {
             // Update the HTML with the data received from the server
-//            document.getElementById('download_link').innerText = data;
             loader_gif.classList.add('hidden')
             downloading.classList.add('hidden')
-            download_link.classList.remove('hidden')
+            download_form.classList.remove('hidden')
             download_link.href = '/'+ data+".mp3";
         })
         .catch(error => {

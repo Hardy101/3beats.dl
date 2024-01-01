@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block head %}
-<title>Video</title>
+<title>Video Download</title>
 {% endblock %}
 
 {% block body %}
@@ -22,15 +22,20 @@
                 <button class="bg-color4 text-black rounded-full px-5 py-1 my-auto shadow-1"><i class="uil uil-heart"></i> Save Song</button>
                 <a href="" class="bg-color3 text-white rounded-full px-5 py-1 my-auto shadow-1"
                 onclick="sendPostRequest('{{video_info.video_id}}', event)">
-                    <i class="uil uil-sync"></i> Covert Video</a>
+                    <i class="uil uil-sync"></i> Convert Video</a>
             </div>
-            <div class="hidden mt-3 text-center bg-white p-4 rounded-2xl" id="loader_div">
+            <div class="hidden animate__animated animate__bounceIn mt-3 text-center bg-white p-4 rounded-2xl" id="loader_div">
                 <!-- Loader -->
                 <img src="{{url_for('static', filename='img/loader.gif')}}" class="mx-auto" id="loader_gif">
-                <span class="text-xl font-bold text-black" id="downloading">MP3 Is downloading, please be patient.</span>
-                <a href="{{url_for('static', filename='{{download_link}}')}}.mp3"
-                   download class="hidden bg-color2 text-white px-3 py-1 rounded-md bold"
-               id="download_link">Download MP3 Now!</a>
+                <span class="block mb-5 text-xl font-bold text-black" id="downloading">MP3 Is downloading, please be patient.</span>
+                <form action="{{url_for('video', video_id=video_info.video_id)}}" method="POST" class="hidden" id="form_download">
+                    <input id="hidden_id" type="hidden" name="{{video_info.video_id}}" value="">
+                    <button class="block w-full bg-color2 text-white px-3 py-1 rounded-md bold"
+                   id="download_link">Download MP3 Now!</button>
+<!--                    <a href="{{url_for('static', filename='{{download_link}}')}}.mp3"-->
+<!--                       download class="hidden block bg-color2 text-white px-3 py-1 rounded-md bold mt-5"-->
+<!--                   id="download_link">Download MP3 Now!</a>-->
+                </form>
             </div>
         </div>
         </div>
