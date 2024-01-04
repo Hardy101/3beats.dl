@@ -1,0 +1,102 @@
+{% extends 'base.html' %} {% block head %}
+<title>Video Converter</title>
+{% endblock %} {% block body %}
+<main class="relative bg-gray-200">
+  <!-- Video Upload Section -->
+  <section>
+    <div class="relative py-28">
+      <div class="text-center px-2">
+        {% if error_msg %}
+        <span>{{error_msg}}</span>
+        {% endif %}
+        <h1 class="text-3xl font-bold md:text-5xl">Video to MP3</h1>
+        <p class="md:text-xl">Convert Video to MP3 format for free!</p>
+      </div>
+      <form
+        class="mx-5 mt-5 p-1 bg-gray-100 rounded-md md:w-3/5 md:mx-auto"
+        action=""
+        enctype="multipart/form-data"
+        method="POST"
+      >
+        <div
+          class="video-upload-body text-center py-16 border-4 border-dashed border-gray-400"
+          id="video-upload-body"
+        >
+          <label
+            for="video_to_convert"
+            class="inline-block shadow-lg text-white bg-color3 rounded-full py-2 px-5 cursor-pointer"
+            id="upload_label"
+          >
+            <i class="uil uil-file-download text-2xl"></i>
+            <span class="text-xl">Choose File</span>
+          </label>
+          <span class="block mt-5 font-bold">Max File Size 500MB</span>
+          <input
+            type="file"
+            class="hidden"
+            name="video_to_convert"
+            id="video_to_convert"
+          />
+          <input type="hidden" name="ext" id="ext" value="" />
+        </div>
+        <div class="hidden video-uploaded" id="video_uploaded">
+          <div class="flex justify-between bg-white p-2">
+            <div class="inline-block flex gap-2 flex-col">
+              <span class="font-bold" id="filename"
+                >Jujutsu Kaisen「AMV Toji Heartless.mp4</span
+              >
+              <p><span id="filesize">21.2MB</span>MB</p>
+            </div>
+            <button
+              type="button"
+              onclick="clear_video_info()"
+              class="inline-block my-auto"
+              id="cancel_video"
+            >
+              <i class="uil uil-times-circle text-3xl text-gray-600"></i>
+            </button>
+          </div>
+          <div class="p-2 text-center">
+            <button
+              type="button"
+              class="inline-block shadow-lg text-white text-xl bg-color3 rounded-full py-2 px-5 cursor-pointer"
+              id="convert_button"
+            >
+              Convert <i class="uil uil-arrow-right"></i>
+            </button>
+            <img src="{{url_for('static', filename='img/loader-1.gif')}}" id="loader" class="block mx-auto hidden">
+             <a href="" target="_blank" class="hidden inline-block shadow-lg text-white text-xl bg-color3 rounded-full py-2 px-5"
+                id="download_button" download>
+              Download MP3 download</a>
+          </div>
+        </div>
+         {% if link %}
+            <a href="{{ link }}" class="inline-block rounded-full px-5 py-2 bg-color3 text-white">
+              Download MP3 download</a>
+          {% endif %}
+      </form>
+    </div>
+  </section>
+  <!-- How to Convert -->
+  <section class="pb-16">
+    <div
+      class="py-10 bg-white px-6 shadow-1 mx-5 rounded-md md:w-3/5 md:mx-auto"
+    >
+      <h2 class="text-2xl font-bold">
+        How to convert video to MP3 on 3beats<span class="text-color3"
+          >.dl</span
+        >
+      </h2>
+      <ol type="1" class="mx-2 mt-3">
+        <li>1. Click on `Choose File` and select your video file</li>
+        <li>2. Click on `Convert` to convert video file</li>
+        <li>
+          3. Click on <span class="font-bold">`Download MP3`</span> when the
+          status changes to "Done"
+        </li>
+      </ol>
+    </div>
+  </section>
+  <script src="{{url_for('static', filename='js/upload.js')}}"></script>
+</main>
+{% endblock %}

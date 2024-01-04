@@ -35,13 +35,13 @@ let pause_audio = document.getElementById("pause_audio");
 function playAudio(audio, el, pause_el) {
   el.classList.add("hidden");
   pause_el.classList.remove("hidden");
-//  audio.play();
+  //  audio.play();
 }
 
 function pauseAudio(audio, el, play_el) {
   el.classList.add("hidden");
   play_el.classList.remove("hidden");
-//  audio.pause();
+  //  audio.pause();
 }
 
 musicList.forEach((music) => {
@@ -82,37 +82,37 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 // View Count Convert to Integer
-let view_count_span = document.querySelectorAll('.view_count')
-view_count_span.forEach((view_count)=>{
-    view_count.textContent = parseInt(view_count.textContent)
-})
+let view_count_span = document.querySelectorAll(".view_count");
+view_count_span.forEach((view_count) => {
+  view_count.textContent = parseInt(view_count.textContent);
+});
 
 // Recover sendPostRequest()
 function sendPostRequest(dynamicPart, event) {
-    event.preventDefault();
+  event.preventDefault();
 
-    let confirmation = confirm('Do you want to download the file?')
-    document.getElementById('loader_div').classList.remove('hidden')
-    loader_gif = document.getElementById('loader_gif')
-    downloading = document.getElementById('downloading')
-    download_link = document.getElementById('download_link')
-    download_form = document.getElementById('form_download')
+  let confirmation = confirm("Do you want to download the file?");
+  document.getElementById("loader_div").classList.remove("hidden");
+  loader_gif = document.getElementById("loader_gif");
+  downloading = document.getElementById("downloading");
+  download_link = document.getElementById("download_link");
+  download_form = document.getElementById("form_download");
 
-    if (confirmation){
-        let dynamicUrl = '/video/' + dynamicPart;
-        fetch(dynamicUrl, {
-            method: 'POST',
-        })
-        .then(response => response.text())  // Assuming the response is plain text
-        .then(data => {
-            // Update the HTML with the data received from the server
-            loader_gif.classList.add('hidden')
-            downloading.classList.add('hidden')
-            download_form.classList.remove('hidden')
-            download_link.href = '/'+ data+".mp3";
-        })
-        .catch(error => {
-            console.error('Error:', error);
-        });
-    }
+  if (confirmation) {
+    let dynamicUrl = "/video/" + dynamicPart;
+    fetch(dynamicUrl, {
+      method: "POST",
+    })
+      .then((response) => response.text()) // Assuming the response is plain text
+      .then((data) => {
+        // Update the HTML with the data received from the server
+        loader_gif.classList.add("hidden");
+        downloading.classList.add("hidden");
+        download_form.classList.remove("hidden");
+        download_link.href = "/" + data + ".mp3";
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  }
 }

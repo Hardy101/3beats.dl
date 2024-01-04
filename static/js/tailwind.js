@@ -7,6 +7,7 @@ tailwind.config = {
         color2: "#5D3587",
         color3: "#A367B1",
         color4: "#FFD1E3",
+        blurGray: "rgba(255,255,255,0.5);",
       },
     },
   },

@@ -1,44 +1,84 @@
-{% extends 'base.html' %}
-
-{% block head %}
+{% extends 'base.html' %} {% block head %}
 <title>Video Download</title>
-{% endblock %}
-
-{% block body %}
+{% endblock %} {% block body %}
 <section class="relative music-bg">
-    <div class="absolute w-full h-full bg-black opacity-20"></div>
-    <div class="relative py-32 flex flex-col justify-center z-10">
-        <div class="p-3 md:w-3/5 md:mx-auto">
-        <div class="w-full">
-            <img src="{{video_info.thumbnail_url}}" class="w-full h-full" alt="thumbnail">
+  <div class="absolute w-full h-full bg-black opacity-20"></div>
+  <div class="relative py-32 flex flex-col justify-center z-10">
+    <div class="p-3 md:w-3/5 md:mx-auto">
+      <div class="w-full">
+        <img
+          src="{{video_info.thumbnail_url}}"
+          class="w-full h-full"
+          alt="thumbnail"
+        />
+      </div>
+      <div class="my-3 text-white">
+        <h1 class="text-3xl font-bold">{{video_info.title}}</h1>
+        <h2 class="">
+          <span class="text-xl font-bold">Source:</span>
+          <a
+            href="https://www.youtube.com/watch?v={{video_info.video_id}}"
+            target="_blank"
+            >https://www.youtube.com/watch?v={{video_info.video_id}}</a
+          >
+        </h2>
+        <div class="mt-3 flex gap-4">
+          <button
+            class="bg-gray-200 text-black rounded-full py-1 px-5 my-auto shadow-1"
+          >
+            <i class="uil uil-share"></i> Share
+          </button>
+          <button
+            class="bg-color4 text-black rounded-full px-5 py-1 my-auto shadow-1"
+          >
+            <i class="uil uil-heart"></i> Save Song
+          </button>
+          <a
+            href=""
+            class="bg-color3 text-white rounded-full px-5 py-1 my-auto shadow-1"
+            onclick="sendPostRequest('{{video_info.video_id}}', event)"
+          >
+            <i class="uil uil-sync"></i> Convert Video</a
+          >
         </div>
-        <div class="my-3 text-white">
-            <h1 class="text-3xl font-bold ">{{video_info.title}}</h1>
-            <h2 class=""><span class="text-xl font-bold">Source:</span>
-                <a href="https://www.youtube.com/watch?v={{video_info.video_id}}"
-                   target="_blank">https://www.youtube.com/watch?v={{video_info.video_id}}</a></h2>
-            <div class="mt-3 flex gap-4">
-                <button class="bg-gray-200 text-black rounded-full py-1 px-5 my-auto shadow-1"><i class="uil uil-share"></i> Share</button>
-                <button class="bg-color4 text-black rounded-full px-5 py-1 my-auto shadow-1"><i class="uil uil-heart"></i> Save Song</button>
-                <a href="" class="bg-color3 text-white rounded-full px-5 py-1 my-auto shadow-1"
-                onclick="sendPostRequest('{{video_info.video_id}}', event)">
-                    <i class="uil uil-sync"></i> Convert Video</a>
-            </div>
-            <div class="hidden animate__animated animate__bounceIn mt-3 text-center bg-white p-4 rounded-2xl" id="loader_div">
-                <!-- Loader -->
-                <img src="{{url_for('static', filename='img/loader.gif')}}" class="mx-auto" id="loader_gif">
-                <span class="block mb-5 text-xl font-bold text-black" id="downloading">MP3 Is downloading, please be patient.</span>
-                <form action="{{url_for('video', video_id=video_info.video_id)}}" method="POST" class="hidden" id="form_download">
-                    <input id="hidden_id" type="hidden" name="{{video_info.video_id}}" value="">
-                    <button class="block w-full bg-color2 text-white px-3 py-1 rounded-md bold"
-                   id="download_link">Download MP3 Now!</button>
-<!--                    <a href="{{url_for('static', filename='{{download_link}}')}}.mp3"-->
-<!--                       download class="hidden block bg-color2 text-white px-3 py-1 rounded-md bold mt-5"-->
-<!--                   id="download_link">Download MP3 Now!</a>-->
-                </form>
-            </div>
+        <div
+          class="hidden animate__animated animate__bounceIn mt-3 text-center bg-white p-4 rounded-2xl"
+          id="loader_div"
+        >
+          <!-- Loader -->
+          <img
+            src="{{url_for('static', filename='img/loader.gif')}}"
+            class="mx-auto"
+            id="loader_gif"
+          />
+          <span class="block mb-5 text-xl font-bold text-black" id="downloading"
+            >MP3 Is downloading, please be patient.</span
+          >
+          <form
+            action="{{url_for('video', video_id=video_info.video_id)}}"
+            method="POST"
+            class="hidden"
+            id="form_download"
+          >
+            <input
+              id="hidden_id"
+              type="hidden"
+              name="{{video_info.video_id}}"
+              value=""
+            />
+            <button
+              class="block w-full bg-color2 text-white px-3 py-1 rounded-md bold"
+              id="download_link"
+            >
+              Download MP3 Now!
+            </button>
+            <!--                    <a href="{{url_for('static', filename='{{download_link}}')}}.mp3"-->
+            <!--                       download class="hidden block bg-color2 text-white px-3 py-1 rounded-md bold mt-5"-->
+            <!--                   id="download_link">Download MP3 Now!</a>-->
+          </form>
         </div>
-        </div>
+      </div>
     </div>
+  </div>
 </section>
 {% endblock %}

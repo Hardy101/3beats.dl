@@ -14,3 +14,5 @@ requests~=2.31.0
 Flask~=3.0.0
 pytube~=15.0.0
 plyer~=2.1.0
+Pillow~=10.1.0
+moviepy~=1.0.3
