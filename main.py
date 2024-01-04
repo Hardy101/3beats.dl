@@ -28,8 +28,8 @@ def convert_video():
         try:
             video_to_convert = request.files['video_to_convert']
             ext = request.form['ext']
-            video_to_convert.save(os.path.join(f'static/uploads/', video_to_convert.filename))
-            output_file_path = convert_video_to_audio(f'static/uploads/{video_to_convert.filename}',
+            video_to_convert.save(os.path.join(f'./static/uploads/', video_to_convert.filename))
+            output_file_path = convert_video_to_audio(f'./static/uploads/{video_to_convert.filename}',
                                                       f'{ext}', f'{video_to_convert.filename}')
             return jsonify({'file_path': f'{output_file_path}.mp3'})
         except Exception as e:

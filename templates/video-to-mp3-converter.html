@@ -1,10 +1,18 @@
 {% extends 'base.html' %} {% block head %}
 <title>Video Converter</title>
 {% endblock %} {% block body %}
-<main class="relative bg-gray-200">
+<main class="relative">
+   <div class="absolute w-full h-full opacity-60 md:hidden z-10">
+    <!-- Green image -->
+    <img
+      src="static/img/spotify.png"
+      class="absolute top-24 floating left-5 w-2/12"
+    />
+    <img src="static/img/music-player.png" class="absolute bottom-1/3 right-2 w-2/12 floating-2">
+  </div>
   <!-- Video Upload Section -->
   <section>
-    <div class="relative py-28">
+    <div class="relative py-28 z-20">
       <div class="text-center px-2">
         {% if error_msg %}
         <span>{{error_msg}}</span>
@@ -78,7 +86,7 @@
     </div>
   </section>
   <!-- How to Convert -->
-  <section class="pb-16">
+  <section class="relative pb-16">
     <div
       class="py-10 bg-white px-6 shadow-1 mx-5 rounded-md md:w-3/5 md:mx-auto"
     >
@@ -100,3 +108,5 @@
   <script src="{{url_for('static', filename='js/upload.js')}}"></script>
 </main>
 {% endblock %}
+
+{% set active_page = 'video_converter' %}

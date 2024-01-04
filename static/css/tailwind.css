@@ -1,4 +1,9 @@
 @layer utilities {
+  :root {
+    --size: 250px;
+    --speed: 50s;
+    --easing: cubic-bezier(0.8, 0.2, 0.2, 0.8);
+  }
   * {
     transition: all 0.3s ease-in-out;
   }
@@ -35,13 +40,13 @@
   }
   .floating-1 {
     animation-name: floating-1;
-    animation-duration: 5s;
+    animation-duration: 4s;
     animation-iteration-count: infinite;
     animation-timing-function: ease-in-out;
   }
   .floating-2 {
     animation-name: floating;
-    animation-duration: 4s;
+    animation-duration: 5s;
     animation-iteration-count: infinite;
     animation-timing-function: ease-in-out;
   }
@@ -62,10 +67,39 @@
       transform: translate(0, 0);
     }
     65% {
-      transform: translate(15px, 0);
+      transform: translate(0, 10px);
     }
     to {
-      transform: translate(-0px, 0);
+      transform: translate(0, -0px);
+    }
+  }
+  /* Slide Background */
+  .bg {
+    animation: slide 3s ease-in-out infinite alternate;
+    background-image: linear-gradient(-60deg, #392467 50%, #A367B1 50%);
+    bottom: 0;
+    left: -50%;
+    opacity: 0.5;
+    position: fixed;
+    right: -50%;
+    top: 0;
+    z-index: -1;
+  }
+
+  .bg2 {
+    animation-direction: alternate-reverse;
+    animation-duration: 4s;
+  }
+
+  .bg3 {
+    animation-duration: 5s;
+  }
+  @keyframes slide {
+    0% {
+      transform: translateX(-25%);
+    }
+    100% {
+      transform: translateX(25%);
     }
   }
 }

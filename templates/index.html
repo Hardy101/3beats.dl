@@ -2,19 +2,18 @@
 <title>3beats</title>
 {% endblock %} {% block body %}
 <!-- hero Section -->
-<section class="relative h-screen grid place-items-center py-16 md:bg-gray-100" id="hero">
+<section class="relative h-screen grid place-items-center py-16 overflow-x-hidden md:bg-gray-100" id="hero">
   <!--  <div class="absolute w-full h-full md:hidden music-bg"></div>-->
-  <div class="absolute w-full h-full opacity-60 md:hidden">
+  <div class="absolute w-full h-full opacity-60 md:hidden z-10">
     <img
-      src="static/img/youtube.png"
-      class="absolute top-40 floating right-9 w-2/12"
+      src="static/img/spotify.png"
+      class="absolute top-32 right-9 w-2/12 floating-1"
     />
     <img
       src="static/img/music.png"
-      class="absolute bottom-20 left-10 w-2/12 floating-2"
+      class="absolute bottom-36 left-10 w-2/12 floating-2"
     />
-    <!-- <img src="static/img/dot pattern.png" class="absolute top-1/2 left-8 w-2/12"> -->
-    <img src="static/img/dot pattern.png" class="absolute bottom-20 right-2 w-2/12">
+    <img src="static/img/music-note.png" class="absolute bottom-20 -right-4 w-1/5 floating">
   </div>
   <div class="hidden md:block absolute right-0 h-full">
     <img
@@ -23,7 +22,7 @@
       alt=""
     />
   </div>
-  <div class="p-5 md:p-10 mr-auto text-black z-10 md:w-3/5">
+  <div class="p-5 md:p-10 mr-auto text-black z-20 md:w-3/5">
     <h1
       class="animate__animated animate__fadeIn slideshow-text text-3xl font-bold my-2"
       id="text1"
@@ -194,3 +193,5 @@
 </section>
 <!--<script src="{{url_for('static', filename='js/async.js')}}"></script>-->
 {% endblock %}
+
+{% set active_page = 'home' %}
