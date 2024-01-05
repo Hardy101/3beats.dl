@@ -110,15 +110,9 @@
         <div class="w-3/5">
           <span class="block font-bold my-2">{{item.title.runs[0].text}}</span>
           <div class="action">
-            <!--                 Audio -->
-            <!--                <audio id="music1" class="music">-->
-            <!--                  <source src="{{ url_for('static', filename='lonely.mp3') }}" type="audio/mp3" />-->
-            <!--                  Your browser does not support the audio element. Please use a-->
-            <!--                  modern browser.-->
-            <!--                </audio>-->
             <div class="action-buttons flex justify-between gap-3">
               <a
-                href="{{url_for('video', video_id=item.videoId)}}"
+                href="{{url_for('audio_downloader', video_id=item.videoId)}}"
                 target="_blank"
                 class="inline-block text-white bg-color3 py-1 px-4 rounded-sm shadow-md"
                 >Audio <i class="uil uil-music text-xl"></i>
@@ -129,33 +123,7 @@
                 class="inline-block text-white bg-color3 py-1 px-4 rounded-sm shadow-md"
                 >Video <i class="uil uil-video text-xl"></i>
               </a>
-
-              <!--                  <button-->
-              <!--                    class="text-white bg-color3 w-1/2 py-1 rounded-sm shadow-md"-->
-              <!--                    id="play_audio1"-->
-              <!--                    onclick="playAudio(document.getElementById('music1'), this, document.getElementById('pause_audio1'))"-->
-              <!--                  >-->
-              <!--                    <i class="uil uil-play"></i> Play-->
-              <!--                  </button>-->
-              <!--                  <button-->
-              <!--                    class="hidden text-white bg-color3 w-1/2 py-1 rounded-sm shadow-md"-->
-              <!--                    id="pause_audio1"-->
-              <!--                    onclick="pauseAudio(document.getElementById('music1'), this, document.getElementById('play_audio1'))"-->
-              <!--                  >-->
-              <!--                    <i class="uil uil-pause"></i> Pause-->
-              <!--                  </button>-->
             </div>
-            <!-- Action Buttons End -->
-            <!--                <div class="action-music flex gap-2 mt-2">-->
-            <!--                  <i class="uil uil-pause"></i>-->
-            <!--                  <div-->
-            <!--                    class="relative rounded-full h-0.5 w-full bg-gray-200 my-auto"-->
-            <!--                  >-->
-            <!--                    <div-->
-            <!--                      class="bg-color3 h-full progress-bar"-->
-            <!--                    ></div>-->
-            <!--                  </div>-->
-            <!--                </div>-->
           </div>
           <div class="flex gap-3 video_data mt-2">
             <span class="font-bold text-color3"

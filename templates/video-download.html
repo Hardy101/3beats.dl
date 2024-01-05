@@ -40,60 +40,54 @@
           <div class="download-links mt-3">
             <span class="block text-xl font-bold">Download Links</span>
             <div class="flex gap-3 flex-wrap">
-              <form action="{{ url_for('download') }}" method="POST">
+              <form action="/download" method="POST" id="form_download">
                 {% for resolution in resolutions %}
                 <button
-                  class="bg-color3 text-white rounded-md px-2 py-1"
+                  type="button"
+                  class="res_btn bg-color3 text-white rounded-md px-2 py-1"
                   name="resolution"
-                  value="{{resolution}}"
+                  value="{{ resolution }}"
+                  onclick="downloadFile(this)"
                 >
                   <i class="uil uil-import"></i> Download {{resolution}}
                 </button>
+                {% endfor %}
                 <input
                   type="hidden"
+                  id="youtube_url"
                   name="youtube_url"
-                  value="{{ youtube_url }}"
+                  value="{{youtube_url}}"
                 />
-                {% endfor %}
               </form>
             </div>
           </div>
           <!-- Download Waiting -->
           <div
-            class="animate__animated animate__bounceIn mt-3 text-center bg-white p-4 rounded-2xl"
+            class="hidden animate__animated animate__bounceIn mt-3 text-center bg-white p-4 rounded-2xl"
             id="loader_div"
           >
             <!-- Loader -->
             <img
               src="{{url_for('static', filename='img/loader.gif')}}"
-              class="hidden mx-auto"
+              class="mx-auto"
               id="loader_gif"
             />
             <span class="text-xl font-bold text-black" id="downloading"
-              >Video Is Converting, please be patient.</span
+              >Fetching video data, please be patient.</span
             >
-            <form action="/" method="POST">
-              <input
-                id="hidden_id"
-                type="hidden"
-                name=""
-                value="{{youtube_url}}"
-              />
-              <!--                    <button class="block w-full bg-color2 text-white px-3 py-1 rounded-md bold mt-5"-->
-              <!--                   id="download_link">Download MP3 Now!</button>-->
-              {% if link %}
-              <a
-                href="{{link}}"
-                class="block bg-color2 text-white px-3 py-1 rounded-md bold mt-5"
-                id="download_link"
-                >Download MP3 Now!</a
-              >
-              {% endif %}
-            </form>
+            <a
+              href="{{link}}"
+              class="hidden block bg-color2 text-white px-3 py-1 rounded-md bold"
+              id="download_link"
+              download
+              >Download video</a
+            >
           </div>
         </div>
       </div>
     </div>
   </section>
 </main>
+
+<script src="{{url_for('static', filename='js/video_download.js')}}"></script>
 {% endblock %} {% set active_page = 'video_download' %}

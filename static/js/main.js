@@ -99,7 +99,7 @@ function sendPostRequest(dynamicPart, event) {
   download_form = document.getElementById("form_download");
 
   if (confirmation) {
-    let dynamicUrl = "/video/" + dynamicPart;
+    let dynamicUrl = "/audio_download/" + dynamicPart;
     fetch(dynamicUrl, {
       method: "POST",
     })
