@@ -20,10 +20,6 @@
   .shadow-2 {
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   }
-  .music-bg {
-    background-image: url(../img/music-bg1.jpg);
-    background-size: cover;
-  }
   .gray-bg {
     background-image: url(../img/bg-gray1.jpg);
     background-size: cover;

@@ -26,36 +26,7 @@ openbtn.forEach((btn) => {
   btn.addEventListener("click", toggleSidebar);
 });
 
-/* Music Play, Pause and Progress */
-let musicList = document.querySelectorAll(".music");
-let progressBar = document.querySelectorAll(".progress-bar");
-let play_audio = document.getElementById("play_audio");
-let pause_audio = document.getElementById("pause_audio");
-
-function playAudio(audio, el, pause_el) {
-  el.classList.add("hidden");
-  pause_el.classList.remove("hidden");
-  //  audio.play();
-}
-
-function pauseAudio(audio, el, play_el) {
-  el.classList.add("hidden");
-  play_el.classList.remove("hidden");
-  //  audio.pause();
-}
-
-musicList.forEach((music) => {
-  music.addEventListener("timeupdate", function () {
-    // Calculate the progress percentage
-    let progress = (music.currentTime / music.duration) * 100;
-    // Update the width of the progress bar
-    progressBar.forEach((bar) => {
-      bar.style.width = progress + "%";
-    });
-  });
-});
-
-/* Slideshow */
+/* Hero Section Slideshow */
 document.addEventListener("DOMContentLoaded", function () {
   const interval = 2500;
 
@@ -87,7 +58,7 @@ view_count_span.forEach((view_count) => {
   view_count.textContent = parseInt(view_count.textContent);
 });
 
-// Recover sendPostRequest()
+// Audio Downlaod AJAX
 function sendPostRequest(dynamicPart, event) {
   event.preventDefault();
 

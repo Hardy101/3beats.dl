@@ -39,7 +39,9 @@
       </button>
       <ul class="mt-12 py-5 px-3 text-2xl leading-loose">
         <li class="">
-          <a href="{{ url_for('index') }}" class="{% if active_page == 'home' %}font-bold text-color2 font-bold {% endif %}"
+          <a
+            href="{{ url_for('index') }}"
+            class="{% if active_page == 'home' %}font-bold text-color2 font-bold {% endif %}"
             ><i class="uil uil-estate"></i> Home</a
           >
         </li>
@@ -60,13 +62,19 @@
         </li>
         <h2 class="mt-2 text-gray-400">Products</h2>
         <li>
-          <a href="#" class="{% if active_page == 'video_download' %}font-bold text-color2 font-bold {% endif %}">
-            <i class="uil uil-video"></i> Video Downloader</a>
+          <a
+            href="#"
+            class="{% if active_page == 'video_download' %}font-bold text-color2 font-bold {% endif %}"
+          >
+            <i class="uil uil-video"></i> Video Downloader</a
+          >
         </li>
         <li>
-          <a href="{{url_for('convert_video')}}"
-             class="{% if active_page == 'video_converter' %}font-bold text-color2 font-bold {% endif %}"><i class="uil uil-sync"></i>
-            Video to MP3 Converter</a>
+          <a
+            href="{{url_for('convert_video')}}"
+            class="{% if active_page == 'video_converter' %}font-bold text-color2 font-bold {% endif %}"
+            ><i class="uil uil-sync"></i> Video to MP3 Converter</a
+          >
         </li>
       </ul>
     </div>

@@ -49,23 +49,20 @@ const reset_divs = () => {
   video_uploaded.classList.toggle("hidden");
 };
 
-// Sending and Receiving Data From Server
 convert_button.addEventListener("click", () => {
   loader.classList.remove("hidden");
   convert_button.classList.add("hidden");
   let videoFile = video_to_convert.files[0];
 
-  // Create a FormData object to handle file uploads
   let formData = new FormData();
   formData.append("video_to_convert", videoFile);
   formData.append("ext", ext.value);
 
-  // Configure the fetch function with the URL and request options
   fetch("/video-to-mp3", {
     method: "POST",
     body: formData,
   })
-    .then((response) => response.json()) // Assuming the response is JSON, you can use response.text() for plain text
+    .then((response) => response.json())
     .then((data) => {
       // Handle the response data here
       convert_button.classList.add("hidden");
@@ -75,7 +72,6 @@ convert_button.addEventListener("click", () => {
       console.log(data.file_path);
     })
     .catch((error) => {
-      // Handle errors here
       console.error("Error:", error);
     });
 });
