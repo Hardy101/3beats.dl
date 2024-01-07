@@ -69,14 +69,15 @@ def audio_downloader(video_id):
 
     if request.method == 'POST':
         try:
-            # Get the audio stream
-            stream = yt.streams.filter(only_audio=True).first().download()  # .first()
-            new_name = os.path.splitext(stream)
-            os.rename(stream, new_name[0] + '.mp3')
-            delete_file_after_delay(download_link, 2)
+            stream = yt.streams.filter(only_audio=True).first()
+            download_path = os.path.join('static', 'downloads', 'audio')
+            output_file_path = convert_video_to_audio(f'./static/downloads/audio/{yt.title}',
+                                                      'mp4', f'{yt.title}')
+            stream.download(output_path=download_path)
+            return jsonify({'download_path': f'/{download_path}/{yt.title}.mp3'})
         except FileExistsError as e:
             pass
-        return render_template('video.html', video_info=yt, download_link=download_link)
+            return render_template('audio-downloader.html', video_info=yt, download_link=download_link)
     return render_template('audio-downloader.html', video_info=yt, download_link=download_link)
 
 

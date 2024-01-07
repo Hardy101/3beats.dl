@@ -59,31 +59,26 @@ view_count_span.forEach((view_count) => {
 });
 
 // Audio Downlaod AJAX
-function sendPostRequest(dynamicPart, event) {
-  event.preventDefault();
+const loader_gif = document.getElementById("loader_gif");
+const downloading = document.getElementById("downloading");
+const download_link = document.getElementById("download_link");
 
-  let confirmation = confirm("Do you want to download the file?");
-  document.getElementById("loader_div").classList.remove("hidden");
-  loader_gif = document.getElementById("loader_gif");
-  downloading = document.getElementById("downloading");
-  download_link = document.getElementById("download_link");
-  download_form = document.getElementById("form_download");
-
-  if (confirmation) {
-    let dynamicUrl = "/audio_download/" + dynamicPart;
-    fetch(dynamicUrl, {
-      method: "POST",
+function sendPostRequest(event) {
+  document.getElementById("loader_div").classList.remove('hidden')
+  let videoId = event.currentTarget.getAttribute("data-video-id");
+  let endpoint = "http://127.0.0.1:5000/audio-downloader/" + videoId;
+  fetch(endpoint, { method: "POST" })
+    .then((response) => {
+      return response.json();
     })
-      .then((response) => response.text()) // Assuming the response is plain text
-      .then((data) => {
-        // Update the HTML with the data received from the server
-        loader_gif.classList.add("hidden");
-        downloading.classList.add("hidden");
-        download_form.classList.remove("hidden");
-        download_link.href = "/" + data + ".mp3";
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-      });
-  }
+    .then((data) => {
+      console.log("Server response:", data.download_path);
+      loader_gif.classList.add("hidden");
+      downloading.classList.add("hidden");
+      download_link.classList.remove("hidden");
+      download_link.href = data.download_path;
+    })
+    .catch((error) => {
+      console.error("Request failed:", error);
+    });
 }

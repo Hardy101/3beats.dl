@@ -39,51 +39,40 @@
             >
               <i class="uil uil-heart"></i> Save Song
             </button>
-            <a
-              href=""
+            <button
               class="bg-color3 text-white rounded-full px-5 py-1 my-auto shadow-1"
-              onclick="sendPostRequest('{{video_info.video_id}}', event)"
+              onclick="sendPostRequest.event"
+              data-video-id="{{video_info.video_id}}"
             >
-              <i class="uil uil-sync"></i> Convert Video</a
-            >
+              <i class="uil uil-sync"></i> Convert Video
+            </button>
           </div>
           <div
-            class="hidden animate__animated animate__bounceIn mt-3 text-center bg-white p-4 rounded-2xl"
+            class="animate__animated animate__bounceIn mt-3 text-center bg-white p-4 rounded-2xl"
             id="loader_div"
           >
+            <iframe id="buttonApi"
+                  src="https://api.vevioz.com/apis/button/mp3?url=https://www.youtube.com/watch?v={{video_info.video_id}}"
+                  width="100%" height="100%" allowtransparency="true" scrolling="no" style="border:none"></iframe>
             <!-- Loader -->
-            <img
-              src="{{url_for('static', filename='img/loader.gif')}}"
-              class="mx-auto"
-              id="loader_gif"
-            />
-            <span
-              class="block mb-5 text-xl font-bold text-black"
-              id="downloading"
-              >MP3 Is downloading, please be patient.</span
-            >
-            <form
-              action="{{url_for('audio_downloader', video_id=video_info.video_id)}}"
-              method="POST"
-              class="hidden"
-              id="form_download"
-            >
-              <input
-                id="hidden_id"
-                type="hidden"
-                name="{{video_info.video_id}}"
-                value=""
-              />
-              <button
-                class="block w-full bg-color2 text-white px-3 py-1 rounded-md bold"
-                id="download_link"
-              >
-                Download MP3 Now!
-              </button>
-              <!--                    <a href="{{url_for('static', filename='{{download_link}}')}}.mp3"-->
-              <!--                       download class="hidden block bg-color2 text-white px-3 py-1 rounded-md bold mt-5"-->
-              <!--                   id="download_link">Download MP3 Now!</a>-->
-            </form>
+<!--            <img-->
+<!--              src="{{url_for('static', filename='img/loader.gif')}}"-->
+<!--              class="mx-auto"-->
+<!--              id="loader_gif"-->
+<!--            />-->
+<!--            <span-->
+<!--              class="block mb-5 text-xl font-bold text-black"-->
+<!--              id="downloading"-->
+<!--              >MP3 Is downloading, please be patient.</span-->
+<!--            >-->
+<!--            <a-->
+<!--              href=""-->
+<!--              class="hidden block w-full bg-color2 text-white px-3 py-1 rounded-md bold"-->
+<!--              id="download_link"-->
+<!--              download-->
+<!--            >-->
+<!--              Download MP3 Now!-->
+<!--            </a>-->
           </div>
         </div>
       </div>

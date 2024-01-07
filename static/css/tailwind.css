@@ -6,6 +6,7 @@
   }
   * {
     transition: all 0.3s ease-in-out;
+    font-family: "Kalam", cursive !important;
   }
   body {
     font-family: "Kalam", cursive;
