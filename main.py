@@ -23,7 +23,6 @@ def audio_downloader(video_id):
             stream.download(output_path=download_path)
             return jsonify({'download_path': f'/{download_path}/{yt.title}.mp3'})
         except FileExistsError as e:
-            pass
             return render_template('audio-downloader.html', video_info=yt, download_link=download_link)
     return render_template('audio-downloader.html', video_info=yt, download_link=download_link)
 
@@ -47,7 +46,6 @@ def convert_video():
 
 @app.route('/delete_files', methods=['GET', 'POST'])
 def delete_files():
-    # target_directory = '/static/downloads/video'
     path = './static/downloads/video'
     try:
         for file in path:
