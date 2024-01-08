@@ -2,13 +2,16 @@
 <title>Video Converter</title>
 {% endblock %} {% block body %}
 <main class="relative">
-   <div class="absolute w-full h-full opacity-60 md:hidden z-10">
+  <div class="absolute w-full h-full opacity-60 md:hidden z-10">
     <!-- Green image -->
     <img
       src="static/img/spotify.png"
       class="absolute top-24 floating left-5 w-2/12"
     />
-    <img src="static/img/music-player.png" class="absolute bottom-1/3 right-2 w-2/12 floating-2">
+    <img
+      src="static/img/music-player.png"
+      class="absolute bottom-1/3 right-2 w-2/12 floating-2"
+    />
   </div>
   <!-- Video Upload Section -->
   <section>
@@ -72,16 +75,30 @@
             >
               Convert <i class="uil uil-arrow-right"></i>
             </button>
-            <img src="{{url_for('static', filename='img/loader-1.gif')}}" id="loader" class="block mx-auto hidden">
-             <a href="" target="_blank" class="hidden inline-block shadow-lg text-white text-xl bg-color3 rounded-full py-2 px-5"
-                id="download_button" download>
-              Download MP3 download</a>
+            <img
+              src="{{url_for('static', filename='img/loader-1.gif')}}"
+              id="loader"
+              class="block mx-auto hidden"
+            />
+            <a
+              href=""
+              target="_blank"
+              class="hidden inline-block shadow-lg text-white text-xl bg-color3 rounded-full py-2 px-5"
+              id="download_button"
+              download
+            >
+              Download MP3 download</a
+            >
           </div>
         </div>
-         {% if link %}
-            <a href="{{ link }}" class="inline-block rounded-full px-5 py-2 bg-color3 text-white">
-              Download MP3 download</a>
-          {% endif %}
+        {% if link %}
+        <a
+          href="{{ link }}"
+          class="inline-block rounded-full px-5 py-2 bg-color3 text-white"
+        >
+          Download MP3 download</a
+        >
+        {% endif %}
       </form>
     </div>
   </section>
@@ -107,6 +124,4 @@
   </section>
   <script src="{{url_for('static', filename='js/upload.js')}}"></script>
 </main>
-{% endblock %}
-
-{% set active_page = 'video_converter' %}
+{% endblock %} {% set active_page = 'video_converter' %}

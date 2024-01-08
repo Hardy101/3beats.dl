@@ -8,17 +8,26 @@ from functions import convert_video_to_audio, delete_file_after_delay
 app = Flask(__name__)
 
 
-@app.route('/', methods=['GET', 'POST'])
-def index():
-    data = []
+@app.route('/audio-downloader/<video_id>', methods=['GET', 'POST'])
+def audio_downloader(video_id):
+    download_link = 'None'
+    youtube_url = "https://www.youtube.com/watch?v=" + video_id
+    yt = YouTube(youtube_url)
+
     if request.method == 'POST':
         try:
-            music_query = request.form['search_music'].lower()
-            data = list(get_search(music_query, limit=9))
-            return render_template('index.html', data=data, music_query=music_query)
-        except Exception as e:
-            return render_template('index.html', error_msg=e)
-    return render_template('index.html', data=data)
+            stream = yt.streams.filter(only_audio=True).first()
+            download_path = os.path.join('static', 'downloads', 'audio')
+            output_file_path = convert_video_to_audio(f'./static/downloads/audio/{yt.title}',
+                                                      'mp4', f'{yt.title}')
+            stream.download(output_path=download_path)
+            return jsonify({'download_path': f'/{download_path}/{yt.title}.mp3'})
+        except FileExistsError as e:
+            pass
+            return render_template('audio-downloader.html', video_info=yt, download_link=download_link)
+    return render_template('audio-downloader.html', video_info=yt, download_link=download_link)
+
+
 
 
 @app.route('/video-to-mp3', methods=['GET', 'POST'])
@@ -48,6 +57,25 @@ def delete_files():
         return f'{e}'
 
 
+
+# Route to return Video path to download 
+@app.route('/download', methods=['GET', 'POST'])
+def download():
+    if request.method == 'POST':
+        try:
+            resolution = request.form['resolution']
+            youtube_url = request.form['youtube_url']
+            yt = YouTube(youtube_url)
+            yt.title = yt.title.replace(' ', '')
+            video_stream = yt.streams.filter(res=resolution, file_extension='mp4', progressive=True).first()
+            download_path = os.path.join('static', 'downloads', 'video')
+            video_stream.download(download_path)
+            return jsonify({'download_path': f"/{download_path}/{yt.title}.mp4"})
+        except Exception as e:
+            return jsonify({'error': str(e)})
+
+
+
 @app.route('/error/<error_msg>')
 def error(error_msg):
     return render_template('error.html', error=error_msg)
@@ -61,24 +89,18 @@ def fetch_data():
     return jsonify(data_list)
 
 
-@app.route('/audio-downloader/<video_id>', methods=['GET', 'POST'])
-def audio_downloader(video_id):
-    download_link = 'None'
-    youtube_url = "https://www.youtube.com/watch?v=" + video_id
-    yt = YouTube(youtube_url)
-
+@app.route('/', methods=['GET', 'POST'])
+def index():
+    data = []
     if request.method == 'POST':
         try:
-            stream = yt.streams.filter(only_audio=True).first()
-            download_path = os.path.join('static', 'downloads', 'audio')
-            output_file_path = convert_video_to_audio(f'./static/downloads/audio/{yt.title}',
-                                                      'mp4', f'{yt.title}')
-            stream.download(output_path=download_path)
-            return jsonify({'download_path': f'/{download_path}/{yt.title}.mp3'})
-        except FileExistsError as e:
-            pass
-            return render_template('audio-downloader.html', video_info=yt, download_link=download_link)
-    return render_template('audio-downloader.html', video_info=yt, download_link=download_link)
+            music_query = request.form['search_music'].lower()
+            data = list(get_search(music_query, limit=9))
+            return render_template('index.html', data=data, music_query=music_query)
+        except Exception as e:
+            return render_template('index.html', error_msg=e)
+    return render_template('index.html', data=data)
+
 
 
 @app.route('/yt-video-downloader/<video_id>', methods=['GET', 'POST'])
@@ -91,23 +113,6 @@ def video_downloader(video_id):
         return render_template('video-download.html', video_data=yt, resolutions=resolutions, youtube_url=youtube_url)
     except Exception as e:
         return render_template('error.html', error_msg=f'{e}')
-
-
-@app.route('/download', methods=['GET', 'POST'])
-def download():
-    # Submit
-    if request.method == 'POST':
-        try:
-            resolution = request.form['resolution']
-            youtube_url = request.form['youtube_url']
-            yt = YouTube(youtube_url)
-            yt.title = yt.title.replace(' ', '')
-            video_stream = yt.streams.filter(res=resolution, file_extension='mp4', progressive=True).first()
-            download_path = os.path.join('static', 'downloads', 'video')
-            video_stream.download(download_path)
-            return jsonify({'download_path': f"/{download_path}/{yt.title}.mp4"})
-        except Exception as e:
-            return jsonify({'error': str(e)})
 
 
 if __name__ == "__main__":
