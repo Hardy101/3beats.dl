@@ -15,14 +15,14 @@
     />
     <img src="static/img/music-note.png" class="absolute bottom-20 -right-4 w-1/5 floating">
   </div>
-  <div class="hidden md:block absolute right-0 h-full">
+  <div class="hidden absolute right-0 h-full md:block">
     <img
       src="{{ url_for('static', filename='img/woman.png') }}"
       class="w-full h-full"
       alt=""
     />
   </div>
-  <div class="p-5 md:p-10 mr-auto text-black z-20 md:w-3/5">
+  <div class="p-5 mr-auto text-black z-20 md:w-3/5">
     <h1
       class="animate__animated animate__fadeIn slideshow-text text-3xl font-bold my-2"
       id="text1"
@@ -93,7 +93,7 @@
     <!-- Divider -->
     <div class="rounded-lg w-full h-0.5 bg-gray-200 mx-auto"></div>
     <div
-      class="search-body grid gap-10 grid-cols-1 md:grid-cols-3 my-5"
+      class="search-body grid gap-10 grid-cols-1 my-5 md:grid-cols-3"
       id="video-list"
     >
       <!-- Result -->
