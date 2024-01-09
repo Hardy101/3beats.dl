@@ -1,9 +1,9 @@
-from flask import Flask, render_template, url_for, redirect, jsonify, request
+from flask import Flask, render_template, jsonify, request
 from scrapetube import get_search
 from pytube import YouTube
 import os.path
 from moviepy.editor import *
-from functions import convert_video_to_audio, delete_file_after_delay
+from functions import convert_video_to_audio
 
 app = Flask(__name__)
 
@@ -16,17 +16,19 @@ def audio_downloader(video_id):
 
     if request.method == 'POST':
         try:
-            stream = yt.streams.filter(only_audio=True).first()
-            download_path = os.path.join('static', 'downloads', 'audio')
-            output_file_path = convert_video_to_audio(f'./static/downloads/audio/{yt.title}',
-                                                      'mp4', f'{yt.title}')
+            stream = yt.streams.filter(file_extension='mp4', progressive=True).first()
+            download_path = os.path.join('static', 'downloads', 'video')
             stream.download(output_path=download_path)
-            return jsonify({'download_path': f'/{download_path}/{yt.title}.mp3'})
-        except FileExistsError as e:
-            return render_template('audio-downloader.html', video_info=yt, download_link=download_link)
+            audio_path = convert_video_to_audio(f'static/downloads/video/{yt.title}', 'mp4', f'{yt.title}')
+            print(f'/{download_path}/{yt.title}.mp3')
+            return jsonify({'download_path': f'/static/downloads/audio/{yt.title}.mp3'})
+
+        except Exception as e:
+            if e == FileExistsError:
+                return render_template('audio-downloader.html', video_info=yt, download_link=download_link)
+            else:
+                return jsonify({'download_path': e})
     return render_template('audio-downloader.html', video_info=yt, download_link=download_link)
-
-
 
 
 @app.route('/video-to-mp3', methods=['GET', 'POST'])
@@ -55,7 +57,6 @@ def delete_files():
         return f'{e}'
 
 
-
 # Route to return Video path to download 
 @app.route('/download', methods=['GET', 'POST'])
 def download():
@@ -71,7 +72,6 @@ def download():
             return jsonify({'download_path': f"/{download_path}/{yt.title}.mp4"})
         except Exception as e:
             return jsonify({'error': str(e)})
-
 
 
 @app.route('/error/<error_msg>')
@@ -98,7 +98,6 @@ def index():
         except Exception as e:
             return render_template('index.html', error_msg=e)
     return render_template('index.html', data=data)
-
 
 
 @app.route('/yt-video-downloader/<video_id>', methods=['GET', 'POST'])

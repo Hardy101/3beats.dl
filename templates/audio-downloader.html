@@ -41,14 +41,14 @@
             </button>
             <button
               class="bg-color3 text-white rounded-full px-5 py-1 my-auto shadow-1"
-              onclick="sendPostRequest.event"
+              onclick="sendPostRequest(event)"
               data-video-id="{{video_info.video_id}}"
             >
               <i class="uil uil-sync"></i> Convert Video
             </button>
           </div>
           <div
-            class="animate__animated animate__bounceIn mt-3 text-center bg-white p-4 rounded-2xl"
+            class="hidden animate__animated animate__bounceIn mt-3 text-center bg-white p-4 rounded-2xl"
             id="loader_div"
           >
             <!-- <iframe id="buttonApi"
