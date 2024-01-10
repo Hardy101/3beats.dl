@@ -19,7 +19,8 @@ def audio_downloader(video_id):
             stream = yt.streams.filter(file_extension='mp4', progressive=True).first()
             download_path = os.path.join('static', 'downloads', 'video')
             stream.download(output_path=download_path)
-            audio_path = convert_video_to_audio(f'static/downloads/video/{yt.title}', 'mp4', f'{yt.title}')
+            audio_path = convert_video_to_audio(f'static/downloads/video/{yt.title}', 'mp4',
+                                                f'{yt.title}', 'audio_convert')
             print(f'/{download_path}/{yt.title}.mp3')
             return jsonify({'download_path': f'/static/downloads/audio/{yt.title}.mp3'})
 
@@ -37,10 +38,11 @@ def convert_video():
         try:
             video_to_convert = request.files['video_to_convert']
             ext = request.form['ext']
-            video_to_convert.save(os.path.join(f'./static/uploads/', video_to_convert.filename))
-            output_file_path = convert_video_to_audio(f'./static/uploads/{video_to_convert.filename}',
-                                                      f'{ext}', f'{video_to_convert.filename}')
-            return jsonify({'file_path': f'{output_file_path}.mp3'})
+            video_to_convert.save(os.path.join(f'static/uploads/', video_to_convert.filename))
+            output_file_path = convert_video_to_audio(f'static/uploads/{video_to_convert.filename}',
+                                                      f'{ext}', f'{video_to_convert.filename}',
+                                                      'vid_convert')
+            return jsonify({'file_path': f'{output_file_path}'})
         except Exception as e:
             return jsonify({'file_path': str(e)})
     return render_template('video-to-mp3-converter.html')
