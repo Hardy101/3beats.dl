@@ -35,20 +35,11 @@ document.addEventListener("DOMContentLoaded", function () {
   let currentIndex = 0;
 
   function showNextText() {
-    // Hide the current text
     textElements[currentIndex].style.display = "none";
-
-    // Increment the index or reset to 0 if at the end
     currentIndex = (currentIndex + 1) % textElements.length;
-
-    // Show the next text
     textElements[currentIndex].style.display = "block";
   }
-
-  // Show the first text initially
   textElements[currentIndex].style.display = "block";
-
-  // Set the interval to change the text
   setInterval(showNextText, interval);
 });
 
@@ -58,7 +49,7 @@ view_count_span.forEach((view_count) => {
   view_count.textContent = parseInt(view_count.textContent);
 });
 
-// Audio Downlaod AJAX
+// Audio Download AJAX
 const loader_gif = document.getElementById("loader_gif");
 const downloading = document.getElementById("downloading");
 const download_link = document.getElementById("download_link");

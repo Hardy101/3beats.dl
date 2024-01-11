@@ -17,7 +17,6 @@ window.onload = function () {
 // Functions
 const handleFileChange = (event) => {
   const files = event.target.files;
-
   if (files && files.length > 0) {
     const file_type = files[0].type;
     const fileName = files[0].name;
