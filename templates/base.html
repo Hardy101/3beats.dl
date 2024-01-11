@@ -38,7 +38,7 @@
         <i class="uil uil-multiply"></i> Close
       </button>
       <ul class="mt-12 py-5 px-3 text-2xl leading-loose">
-        <li class="">
+        <li>
           <a
             href="{{ url_for('index') }}"
             class="{% if active_page == 'home' %}font-bold text-color2 font-bold {% endif %}"
@@ -46,12 +46,12 @@
           >
         </li>
         <li>
-          <a href="" class="block"
+          <a href="#" class="block"
             ><i class="uil uil-image-search"></i> Browse</a
           >
         </li>
         <li>
-          <a href="" class="block flex flex-row justify-between">
+          <a href="#" class="block flex flex-row justify-between">
             <span class="my-auto"
               ><i class="uil uil-heart"></i> Saved Songs</span
             >
@@ -60,7 +60,7 @@
             >
           </a>
         </li>
-        <h2 class="mt-2 text-gray-400">Products</h2>
+        <h2 class="mt-2 font-bold">Products</h2>
         <li>
           <a
             href="#"
@@ -96,7 +96,7 @@
           <ul class="hidden gap-5 font-bold my-auto md:flex">
             <li><a href="{{ url_for('index') }}">Home</a></li>
             <li><a href="#">Browse</a></li>
-            <li><a href="">YT Video Downloader</a></li>
+            <li><a href="#">YT Video Downloader</a></li>
             <li>
               <a href="{{ url_for('convert_video') }}"
                 >Video to MP3 Converter</a
@@ -176,7 +176,7 @@
             ><img
               src="{{ url_for('static', filename='img/icons8-dot-30.png') }}"
               class="inline-block invert scale-50 mt-2"
-              alt=""
+              alt="dot image"
           /></span>
           <span>Privacy Policy</span>
           <div class="flex flex-col justify-center mt-2">
