@@ -68,7 +68,6 @@ convert_button.addEventListener("click", () => {
       download_button.href = data.file_path;
       download_button.classList.remove("hidden");
       loader.classList.add("hidden");
-      console.log(data.file_path);
     })
     .catch((error) => {
       console.error("Error:", error);
