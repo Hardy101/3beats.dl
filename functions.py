@@ -8,6 +8,7 @@ def convert_video_to_audio(file_dir, file_ext, output_file_name, convert_type):
         output_file_name = output_file_name.replace('.mkv', '')
     elif '.avi' in output_file_name:
         output_file_name = output_file_name.replace('.avi', '')
+    print(file_dir)
     video = VideoFileClip(file_dir)
     video.audio.write_audiofile(f"static/downloads/audio/{output_file_name}.mp3")
     return f'./static/downloads/audio/{output_file_name}.mp3'

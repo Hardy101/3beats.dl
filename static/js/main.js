@@ -55,7 +55,7 @@ const downloading = document.getElementById("downloading");
 const download_link = document.getElementById("download_link");
 
 function sendPostRequest(event) {
-  document.getElementById("loader_div").classList.remove('hidden')
+  document.getElementById("loader_div").classList.remove("hidden");
   let videoId = event.currentTarget.getAttribute("data-video-id");
   let endpoint = "http://127.0.0.1:5000/audio-downloader/" + videoId;
   fetch(endpoint, { method: "POST" })

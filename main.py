@@ -19,16 +19,13 @@ def audio_downloader(video_id):
             stream = yt.streams.filter(file_extension='mp4', progressive=True).first()
             download_path = os.path.join('static', 'downloads', 'video')
             stream.download(output_path=download_path)
-            audio_path = convert_video_to_audio(f'static/downloads/video/{yt.title}', 'mp4',
-                                                f'{yt.title}', 'audio_convert')
+            convert_video_to_audio(f'static/downloads/video/{yt.title}.mp4', 'mp4',
+                                   f'{yt.title}', 'audio')
             print(f'/{download_path}/{yt.title}.mp3')
             return jsonify({'download_path': f'/static/downloads/audio/{yt.title}.mp3'})
 
         except Exception as e:
-            if e == FileExistsError:
-                return render_template('audio-downloader.html', video_info=yt, download_link=download_link)
-            else:
-                return jsonify({'download_path': e})
+            return jsonify({'download_path': str(e)})
     return render_template('audio-downloader.html', video_info=yt, download_link=download_link)
 
 

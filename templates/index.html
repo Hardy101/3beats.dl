@@ -2,7 +2,10 @@
 <title>3beats</title>
 {% endblock %} {% block body %}
 <!-- hero Section -->
-<section class="relative h-screen grid place-items-center py-16 overflow-x-hidden md:bg-gray-100" id="hero">
+<section
+  class="relative h-screen grid place-items-center py-16 overflow-x-hidden md:bg-gray-100"
+  id="hero"
+>
   <!--  <div class="absolute w-full h-full md:hidden music-bg"></div>-->
   <div class="absolute w-full h-full opacity-60 md:hidden z-10">
     <img
@@ -13,7 +16,10 @@
       src="static/img/music.png"
       class="absolute bottom-36 left-10 w-2/12 floating-2"
     />
-    <img src="static/img/music-note.png" class="absolute bottom-20 -right-4 w-1/5 floating">
+    <img
+      src="static/img/music-note.png"
+      class="absolute bottom-20 -right-4 w-1/5 floating"
+    />
   </div>
   <div class="hidden absolute right-0 h-full md:block">
     <img
@@ -42,7 +48,7 @@
       Hunt, Capture, Enjoy: Search & Download Video Delight!
     </h1>
     <p class="text-xl">
-      Get Your Groove On: Download Your Favorite Videos and Audios from YouTube Now!
+      Get Your Groove On: Download Your Favorite Videos and Audios Now!
     </p>
     <div class="mt-10">
       <form
@@ -160,6 +166,4 @@
   </div>
 </section>
 <!--<script src="{{url_for('static', filename='js/async.js')}}"></script>-->
-{% endblock %}
-
-{% set active_page = 'home' %}
+{% endblock %} {% set active_page = 'home' %}
