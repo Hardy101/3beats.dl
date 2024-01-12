@@ -63,7 +63,6 @@ convert_button.addEventListener("click", () => {
   })
     .then((response) => response.json())
     .then((data) => {
-      // Handle the response data here
       convert_button.classList.add("hidden");
       download_button.href = data.file_path;
       download_button.classList.remove("hidden");
