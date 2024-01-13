@@ -1,10 +1,7 @@
 function submitForm() {
   var form = document.getElementById("form_download");
-
   var url = form.getAttribute("action");
-
   var formData = new FormData(form);
-
   fetch(url, {
     method: "POST",
     body: formData,
