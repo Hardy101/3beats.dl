@@ -1,12 +1,6 @@
 @layer utilities {
-  :root {
-    --size: 250px;
-    --speed: 50s;
-    --easing: cubic-bezier(0.8, 0.2, 0.2, 0.8);
-  }
   * {
     transition: all 0.3s ease-in-out;
-    font-family: "Kalam", cursive !important;
   }
   body {
     font-family: "Kalam", cursive;
