@@ -6,7 +6,7 @@
     font-family: "Kalam", cursive;
   }
   .womanwithheadphone-bg {
-    background-image: url(../img/woman\ with\ headphones.jpg);
+    background-image: url("../img/woman\ with\ headphones.jpg");
     background-size: cover;
   }
   .shadow-1 {
@@ -33,8 +33,6 @@
     animation-iteration-count: infinite;
     animation-timing-function: ease-in-out;
   }
-
-  /* Slide Background */
   .bg {
     animation: slide 3s ease-in-out infinite alternate;
     background-image: linear-gradient(-60deg, #392467 50%, #a367b1 50%);
