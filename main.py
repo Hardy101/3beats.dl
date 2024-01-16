@@ -104,7 +104,7 @@ def video_downloader(video_id):
     youtube_url = "https://www.youtube.com/watch?v=" + video_id
     try:
         yt = YouTube(youtube_url)
-        video_streams = yt.streams.filter(file_extension='mp4', progressive=True).all()
+        video_streams = yt.streams.filter(file_extension='mp4', progressive=False).all()
         resolutions = sorted(set(stream.resolution for stream in video_streams if stream.resolution is not None))
         return render_template('video-download.html', video_data=yt, resolutions=resolutions, youtube_url=youtube_url)
     except Exception as e:
