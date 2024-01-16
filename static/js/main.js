@@ -50,11 +50,10 @@ view_count_span.forEach((view_count) => {
 });
 
 // Audio Download AJAX
-const loader_gif = document.getElementById("loader_gif");
-const downloading = document.getElementById("downloading");
-const download_link = document.getElementById("download_link");
-
 function sendPostRequest(event) {
+  const loader_gif = document.getElementById("loader_gif");
+  const downloading = document.getElementById("downloading");
+  const download_link = document.getElementById("download_link");
   document.getElementById("loader_div").classList.remove("hidden");
   let videoId = event.currentTarget.getAttribute("data-video-id");
   let endpoint = "http://127.0.0.1:5000/audio-downloader/" + videoId;
