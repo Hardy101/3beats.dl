@@ -63,11 +63,20 @@
           </div>
           <!-- Download Waiting -->
           <div
-            class="hidden animate__animated animate__bounceIn mt-3 text-center bg-white p-4 rounded-2xl"
+            class="animate__animated animate__bounceIn mt-3 text-center bg-white p-4 rounded-2xl"
             id="loader_div"
           >
+            <iframe
+              id="buttonApi"
+              src="https://api.vevioz.com/apis/button/mp4?url=https://{{youtube_url}}"
+              width="100%"
+              height="100%"
+              allowtransparency="true"
+              scrolling="no"
+              style="border: none"
+            ></iframe>
             <!-- Loader -->
-            <img
+            <!-- <img
               src="{{url_for('static', filename='img/loader.gif')}}"
               class="mx-auto"
               id="loader_gif"
@@ -81,7 +90,7 @@
               id="download_link"
               download
               >Save video <i class="uil uil-download-alt"></i
-            ></a>
+            ></a> -->
           </div>
         </div>
       </div>
