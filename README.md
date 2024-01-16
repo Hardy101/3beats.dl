@@ -18,9 +18,10 @@
 
 This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
 
-- [![Next][Flask]][Next-url]
+- [![Flask][Flask]][flask-url]
 
 <!-- MARKDOWN LINKS & IMAGES -->
 
 [product-screenshot]: static/img/product.png
 [Flask]: https://img.shields.io/badge/with%20a%20logo-grey?style=for-the-badge&logo=flask
+[flask-url]: https://flask.palletsprojects.com/en/3.0.x/
