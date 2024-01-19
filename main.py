@@ -87,6 +87,11 @@ def privacy_policy():
     return render_template('privacy-policy.html')
 
 
+@app.route('/terms-conditions')
+def terms_conditions():
+    return render_template('terms and conditions.html')
+
+
 @app.route('/yt-video-downloader/<video_id>', methods=['GET', 'POST'])
 def video_downloader(video_id):
     return redirect(url_for('index'))
