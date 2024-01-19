@@ -1,4 +1,5 @@
 /* Navbar Switch */
+/* 
 let nav_1 = document.querySelector("#nav-1");
 let nav_2 = document.querySelector("#nav-2");
 
@@ -11,8 +12,9 @@ window.addEventListener("scroll", () => {
     nav_2.classList.add("hidden");
   }
 });
-
+*/
 /* Sidebar Open & Close */
+/*
 let openbtn = document.querySelectorAll(".openbtn");
 let closebtn = document.querySelector("#closebtn");
 let sidebar = document.querySelector("#sidebar");
@@ -25,7 +27,7 @@ function toggleSidebar() {
 openbtn.forEach((btn) => {
   btn.addEventListener("click", toggleSidebar);
 });
-
+*/
 /* Hero Section Slideshow */
 document.addEventListener("DOMContentLoaded", function () {
   const interval = 2500;

@@ -1,4 +1,4 @@
-from flask import Flask, render_template, jsonify, request
+from flask import Flask, render_template, jsonify, request, redirect, url_for
 from scrapetube import get_search
 from pytube import YouTube
 import os.path
@@ -31,6 +31,7 @@ def audio_downloader(video_id):
 
 @app.route('/video-to-mp3', methods=['GET', 'POST'])
 def convert_video():
+    return redirect(url_for('index'))
     if request.method == 'POST':
         try:
             video_to_convert = request.files['video_to_convert']
@@ -45,20 +46,10 @@ def convert_video():
     return render_template('video-to-mp3-converter.html')
 
 
-@app.route('/delete_files', methods=['GET', 'POST'])
-def delete_files():
-    path = './static/downloads/video'
-    try:
-        for file in path:
-            os.remove(file)
-        return 'successful'
-    except Exception as e:
-        return f'{e}'
-
-
 # Route to return Video path to download 
 @app.route('/download', methods=['GET', 'POST'])
 def download():
+    return redirect(url_for('index'))
     if request.method == 'POST':
         try:
             resolution = request.form['resolution']
@@ -78,14 +69,6 @@ def error(error_msg):
     return render_template('error.html', error=error_msg)
 
 
-@app.route('/fetch_data', methods=['GET', 'POST'])
-def fetch_data():
-    music_query = 'fish'
-    data = get_search(music_query, limit=10)
-    data_list = list(data)
-    return jsonify(data_list)
-
-
 @app.route('/', methods=['GET', 'POST'])
 def index():
     data = []
@@ -101,6 +84,7 @@ def index():
 
 @app.route('/yt-video-downloader/<video_id>', methods=['GET', 'POST'])
 def video_downloader(video_id):
+    return redirect(url_for('index'))
     youtube_url = "https://www.youtube.com/watch?v=" + video_id
     try:
         yt = YouTube(youtube_url)

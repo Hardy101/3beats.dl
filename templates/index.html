@@ -29,27 +29,8 @@
     />
   </div>
   <div class="p-5 mr-auto text-black z-20 md:w-3/5">
-    <h1
-      class="animate__animated animate__fadeIn slideshow-text text-3xl font-bold my-2"
-      id="text1"
-    >
-      Discover & Download: Unleash the Power of Video Search!
-    </h1>
-    <h1
-      class="hidden animate__animated animate__fadeIn slideshow-text text-3xl font-bold my-2"
-      id="text2"
-    >
-      Transform Any Video: Convert to MP3 Magic!
-    </h1>
-    <h1
-      class="hidden animate__animated animate__fadeIn slideshow-text text-3xl font-bold my-2"
-      id="text3"
-    >
-      Hunt, Capture, Enjoy: Search & Download Video Delight!
-    </h1>
-    <p class="text-xl">
-      Get Your Groove On: Download Your Favorite Videos and Audios Now!
-    </p>
+    <h1 class="text-3xl font-bold my-2">Find Your Jam, Instantly!</h1>
+    <p class="text-xl">Search and download your favorite tunes now</p>
     <div class="mt-10">
       <form
         class="py-5 rounded-2xl px-3 bg-white shadow-lg md:rounded-full"
@@ -108,22 +89,22 @@
         <div class="w-3/5">
           <span class="block font-bold my-2">{{item.title.runs[0].text}}</span>
           <div class="action">
-            <div class="action-buttons flex justify-between gap-3">
+            <div class="action-buttons">
               <a
                 href="{{url_for('audio_downloader', video_id=item.videoId)}}"
                 target="_blank"
-                class="inline-block text-white bg-color3 py-1 px-4 rounded-sm shadow-md"
-                >Audio <i class="uil uil-music text-xl"></i>
+                class="block w-full text-white text-center bg-color3 py-1 px-4 rounded-2xl"
+                >Download <i class="uil uil-arrow-to-bottom"></i>
               </a>
-              <a
+              <!-- <a
                 href="{{url_for('video_downloader', video_id=item.videoId)}}"
                 target="_blank"
-                class="inline-block text-white bg-color3 py-1 px-4 rounded-sm shadow-md"
+                class="inline-block text-white bg-color3 py-1 px-4 rounded-sm"
                 >Video <i class="uil uil-video text-xl"></i>
-              </a>
+              </a> -->
             </div>
           </div>
-          <div class="flex gap-3 video_data mt-2">
+          <div class="flex justify-center gap-3 video_data mt-2">
             <span class="font-bold text-color3"
               ><i class="uil uil-clock"></i>
               {{item.lengthText.simpleText}}</span
