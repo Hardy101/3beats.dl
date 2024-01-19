@@ -82,6 +82,11 @@ def index():
     return render_template('index.html', data=data)
 
 
+@app.route('/privacy-policy')
+def privacy_policy():
+    return render_template('privacy-policy.html')
+
+
 @app.route('/yt-video-downloader/<video_id>', methods=['GET', 'POST'])
 def video_downloader(video_id):
     return redirect(url_for('index'))
@@ -97,3 +102,4 @@ def video_downloader(video_id):
 
 if __name__ == "__main__":
     app.run(debug=True)
+
