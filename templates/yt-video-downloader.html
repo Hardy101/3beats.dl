@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../static/css/tailwind.css" />
+    <script src="../static/js/tailwind.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unicons.iconscout.com/release/v4.0.8/css/line.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/4.3.2/iframeResizer.min.js"></script>
+    <title>Youtube Video Downloader</title>
+  </head>
+  <body class="bg-gray-200 p-3">
+    <main class="rounded-2xl p-10 bg-white">
+      <div class="video-input-div text-center">
+        <h1 class="text-3xl font-bold flex justify-center gap-2">
+          <img src="../static/img/youtube.png" alt="" width="70" />
+          <span class="my-auto">Youtube Downloader</span>
+        </h1>
+        <p>Paste Video Link and download</p>
+
+        <form class="mt-10 mb-5">
+          <div class="relative w-full overflow-hidden">
+            <input
+              type="text"
+              name="vid_link"
+              id="vid_link"
+              class="md:w-11/12 p-5 outline-none bg-gray-100 border border-1 rounded-sm"
+            />
+            <button
+              type="button"
+              id="pasteButton"
+              class="absolute right-16 top-3 bg-color1 text-white rounded-sm text-center p-2"
+            >
+              Paste <i class="uil uil-clipboard-notes"></i>
+            </button>
+          </div>
+        </form>
+      </div>
+      <div class="w-3/5 video-get-div mt-20 mx-auto">
+        <iframe
+          id="widgetApi"
+          src="https://api.vevioz.com/api/widget/Y5OOtQdjUVc"
+          class="w-full h-full border"
+          allowtransparency="true"
+          scrolling="no"
+          style="border: none"
+        ></iframe>
+      </div>
+    </main>
+    <script>
+      // widgetApi.setAttribute(
+      //   "src",
+      //   "https://api.vevioz.com/api/widgetv2/mp4/Y5OOtQdjUVc"
+      // );
+      iFrameResize({ log: false }, "#widgetApi");
+
+      const pasteButton = document.getElementById("pasteButton");
+      const widgetApi = document.getElementById("widgetApi");
+      const input = document.getElementById("vid_link");
+      pasteButton.addEventListener("click", async () => {
+        try {
+          const text = await navigator.clipboard.readText();
+          input.value = text;
+
+          widgetApi.setAttribute(
+            "src",
+            "https://api.vevioz.com/api/widget/mp4/Y5OOtQdjUVc"
+          );
+          iFrameResize({ log: false }, "#widgetv2Api");
+        } catch (error) {
+          console.log(error);
+        }
+      });
+    </script>
+  </body>
+</html>

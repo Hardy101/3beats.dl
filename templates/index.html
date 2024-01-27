@@ -78,8 +78,16 @@
       <!-- Result -->
       {% for item in data %}
       <div
-        class="result animate__animated animate__bounceIn flex gap-4 result shadow-1 p-2 rounded-md my-auto"
+        class="relative result animate__animated animate__bounceIn flex gap-4 result shadow-1 p-2 rounded-md my-auto"
       >
+        <a
+          href="{{item.thumbnail.thumbnails[0].url}}"
+          target="_blank"
+          class="absolute py-1 px-2 -right-2 -top-3 rounded-xl bg-color3 text-white"
+          download
+        >
+          <i class="uil uil-image"></i>
+        </a>
         <img
           src="{{item.thumbnail.thumbnails[0].url}}"
           class="w-2/5 my-auto"
